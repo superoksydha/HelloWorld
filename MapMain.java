@@ -72,54 +72,53 @@ public class MapMain implements Serializable {
 			n = navigasi koordinat
 		*/
 
-		System.out.print("  Masukkan kode aksi");
-		System.out.print("\n  > ");
+		System.out.println("Masukkan kode aksi");
 		char pil = in.next().charAt(0);
 		switch(pil) {
 			case 'a':
 			{
-				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true) && ((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).building == false))) {
-					System.out.println("  Maaf, anda tidak bisa pindah ke kiri");
+				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true) || ((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).building == false))) {
+					System.out.println("Maaf, anda tidak bisa pindah ke kiri");
 				}
 				else {
 					(this.pemain).move('a');
-					System.out.println("  Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama\n");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
 				}
 			}
 			break;
 
 			case'd':
 			{
-				if ((((this.pemain).getCoord()).getX() + 1) > 31 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true) && ((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).building == false))) {
-					System.out.println("  Maaf, anda tidak bisa pindah ke kanan");
+				if ((((this.pemain).getCoord()).getX() + 1) > 31 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true) || ((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).building == false))) {
+					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
 					(this.pemain).move('d');
-					System.out.println("  Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama\n");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
 				}
 			}
 			break;
 
 			case'w':
 			{
-				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true) && ((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).building == false))) {
-					System.out.println("  Maaf, anda tidak bisa pindah ke atas");
+				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true) || ((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).building == false))) {
+					System.out.println("Maaf, anda tidak bisa pindah ke atas");
 				}
 				else {
 					(this.pemain).move('w');
-					System.out.println("  Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama\n");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
 				}
 			}
 			break;
 
 			case's':
 			{
-				if ((((this.pemain).getCoord()).getY() + 1) > 28 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true) && ((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).building == false))) {
-					System.out.println("  Maaf, anda tidak bisa pindah ke bawah");
+				if ((((this.pemain).getCoord()).getY() + 1) > 28 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true) || ((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).building == false))) {
+					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
 					(this.pemain).move('s');
-					System.out.println("  Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama\n");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
 				}
 			}
 			break;
@@ -139,11 +138,27 @@ public class MapMain implements Serializable {
 			case'm':
 			{
 				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isPintu != true) {
-					System.out.println("  Anda tidak menghadap ke pintu...");
+					System.out.println("Anda tidak menghadap ke pintu...");
 				}
 				else {
-					//pindahin player, pake if (kalo di rumah player pindahin ke rumah, jalanin action() rumah dll)
-					System.out.println("  Player sudah dipindahkan kedalam ");
+					if (this.pemain.coord == new Koordinat(5,3)) {
+						System.out.println("Player sudah dipindahkan kedalam Rumah");
+						a.player = this.player;
+						this.player = null;
+						a.action(this,b,c);
+					}
+					if (this.pemain.coord == new Koordinat(13,4)) {
+						System.out.println("Player sudah dipindahkan kedalam Kandang Sapi Domba");
+						c.player = this.player;
+						this.player = null;
+						c.action(this,a,b);
+					}
+					if (this.pemain.coord == new Koordinat(4,16)) {
+						System.out.println("Player sudah dipindahkan kedalam Kandang Ayam");
+						b.player = this.player;
+						this.player = null;
+						b.action(this,a,c);
+					}
 				}
 			}
 			break;
@@ -160,11 +175,11 @@ public class MapMain implements Serializable {
 				//navigasi koordinat
 				boolean ulang = true;
 				while(ulang) {
-					System.out.println("  Masukkan koordinat x");
+					System.out.println("Masukkan koordinat x");
 					int x = in.nextInt();
-					System.out.println("  Masukkan koordinat y");
+					System.out.println("Masukkan koordinat y");
 					int y = in.nextInt();
-					System.out.println("  Masukkan arah hadap (Top, Bottom, Right, Left)");
+					System.out.println("Masukkan arah hadap (Top, Bottom, Right, Left)");
 					String ac = in.nextLine();
 					if(((this.mapu[x][y]).building == false) && (this.mapu[x][y].cekIsi == false) && (ac == "Top" || ac == "Bottom" || ac == "Right" | ac == "Left")) {
 						(this.pemain).setCoord(x,y);
@@ -172,7 +187,7 @@ public class MapMain implements Serializable {
 						ulang = false;
 					}
 					else {
-						System.out.println("  Kotak tidak dapat ditempati pemain atau masukan arah hadap salah... Ulangi masukan");
+						System.out.println("Kotak tidak dapat ditempati pemain atau masukan arah hadap salah... Ulangi masukan");
 					}
 				}
 			}
@@ -187,7 +202,7 @@ public class MapMain implements Serializable {
 			case'v':
 			{
 				//save, karena ini di map utama, ga bisa save
-				System.out.println("  Maaf, anda tidak bisa tidur disini");
+				System.out.println("Maaf, anda tidak bisa tidur disini");
 			}
 			break;
 
@@ -201,15 +216,15 @@ public class MapMain implements Serializable {
 			case'c':
 			{
 				//cek objek arah hadap player
-				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).building = true) {
-					System.out.println("  Di hadapan anda ada bangunan");
+				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).building == true) {
+					System.out.println("Di hadapan anda ada bangunan");
 				}
 				else if (((((this.pemain).inFrontOf()).getX() <= 29) || (((this.pemain).inFrontOf()).getX() >= 10)) && ((((this.pemain).inFrontOf()).getY() <= 26) || (((this.pemain).inFrontOf()).getY() >= 7))) {
 					if (((TileSawah) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
 						System.out.println((((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).getNama());
 					}
 					else {
-						System.out.println("  Di hadapan anda ada petak sawah");
+						System.out.println("Di hadapan anda ada petak sawah");
 					}
 				}
 			}

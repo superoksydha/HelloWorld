@@ -56,7 +56,7 @@ public class MapRumah {
 		switch(pil) {
 			case 'a':
 			{
-				if ((((((this.pemain).getCoord()).getX() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) && ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).building == false)) {
+				if ((((((this.pemain).getCoord()).getX() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).building == false)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kiri");
 				}
 				else {
@@ -68,7 +68,7 @@ public class MapRumah {
 
 			case'd':
 			{
-				if ((((((this.pemain).getCoord()).getX() + 1) > 8) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) && ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).building == false)) {
+				if ((((((this.pemain).getCoord()).getX() + 1) > 8) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).building == false)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
@@ -80,7 +80,7 @@ public class MapRumah {
 
 			case'w':
 			{
-				if ((((((this.pemain).getCoord()).getY() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).cekIsi == false)) && ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).building == false)) {
+				if ((((((this.pemain).getCoord()).getY() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).building == false)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke atas");
 				}
 				else {
@@ -92,7 +92,7 @@ public class MapRumah {
 
 			case's':
 			{
-				if ((((((this.pemain).getCoord()).getY() + 1) > 15) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).cekIsi == false)) && ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).building == false)) {
+				if ((((((this.pemain).getCoord()).getY() + 1) > 15) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).building == false)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
