@@ -10,10 +10,22 @@ public class MapMain implements Serializable {
 	private int x;
 	private int y;
 	public Player pemain;
+	public Tanaman[] crops;
+	public int planted;
+
+	/*public void plant(Spesies biji, int x, int y){
+		switch biji{
+			case KOL: crops[planted] = new Kol(String.valueOf(planted), x, y);
+			case JAGUNG: crops[planted] = new Jagung(String.valueOf(planted), x, y);
+			case LOBAK: crops[planted] = new Jagung(String.valueOf(planted), x, y);
+		}
+		planted++;
+	}*/
 
 	public MapMain(Player a){
 		this.x = 32;
 		this.y = 29;
+		this.planted = 0;
 		for (int i = 0; i <= 31; i++) {
 			for (int j = 0; j <=28; j++) {
 					this.mapu[i][j] = new TileK();
