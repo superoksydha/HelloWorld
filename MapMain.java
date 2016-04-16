@@ -31,7 +31,7 @@ public class MapMain implements Serializable {
 
 		//untuk tile kandang ayam
 		for (int i = 2; i <= 4; i++) {
-			for (int j = 2; j<= 15; j++) {
+			for (int j = 15; j<= 18; j++) {
 				this.mapu[i][j] = new TileKandangAyam();
 			}
 		}

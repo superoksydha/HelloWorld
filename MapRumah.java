@@ -110,7 +110,7 @@ public class MapRumah {
 
 			case'm':
 			{
-					(this.pemain).setCoord(3,1);
+					(this.pemain).setCoord(5,3);
 					a.pemain = this.pemain;
 					this.pemain = null;
 					System.out.println("Player sudah dipindahkan ke map utama");
