@@ -13,7 +13,6 @@ public class Main {
 		Player player;
 		String s;
 		char c;
-		Game game;
 		Waktu time;
 		boolean dummy;
 
@@ -55,7 +54,6 @@ public class Main {
 					home = new MapRumah(player);
 					chickencoop = new MapKandangA(player);
 					barn = new MapKandangSD(player);
-					game = new Game(player, farm, home, chickencoop, barn);
 					time = new Waktu();
 					try{
 						time.start();
@@ -91,6 +89,7 @@ public class Main {
 					break;
 				case 3:
 					System.out.println("\n    Terima kasih. Selamat tinggal!");
+					System.exit(0);
 					break;
 				default:
 					System.out.println("\n    Pilihan salah. Mohon diulangi!");

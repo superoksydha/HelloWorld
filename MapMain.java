@@ -141,22 +141,22 @@ public class MapMain implements Serializable {
 					System.out.println("Anda tidak menghadap ke pintu...");
 				}
 				else {
-					if (this.pemain.coord == new Koordinat(5,3)) {
+					if (this.pemain.getCoord() == new Koordinat(5,3)) {
 						System.out.println("Player sudah dipindahkan kedalam Rumah");
-						a.player = this.player;
-						this.player = null;
+						a.pemain = this.pemain;
+						this.pemain = null;
 						a.action(this,b,c);
 					}
-					if (this.pemain.coord == new Koordinat(13,4)) {
+					if (this.pemain.getCoord() == new Koordinat(13,4)) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Sapi Domba");
-						c.player = this.player;
-						this.player = null;
+						c.pemain = this.pemain;
+						this.pemain = null;
 						c.action(this,a,b);
 					}
-					if (this.pemain.coord == new Koordinat(4,16)) {
+					if (this.pemain.getCoord() == new Koordinat(4,16)) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Ayam");
-						b.player = this.player;
-						this.player = null;
+						b.pemain = this.pemain;
+						this.pemain = null;
 						b.action(this,a,c);
 					}
 				}
