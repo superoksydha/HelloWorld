@@ -182,8 +182,9 @@ public class MapMain implements Serializable {
 					int x = in.nextInt();
 					System.out.println("Masukkan koordinat y");
 					int y = in.nextInt();
-					System.out.println("Masukkan arah hadap (Top, Bottom, Right, Left)");
+					System.out.print("Masukkan arah hadap (Top, Bottom, Right, Left)");
 					String ac = in.nextLine();
+					System.out.println(ac);
 					if(((this.mapu[x][y]).building == false) && (this.mapu[x][y].cekIsi == false) && (ac == "Top" || ac == "Bottom" || ac == "Right" | ac == "Left")) {
 						(this.pemain).setCoord(x,y);
 						(this.pemain).setOrient(ac);
