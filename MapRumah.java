@@ -56,48 +56,48 @@ public class MapRumah {
 		switch(pil) {
 			case 'a':
 			{
-				if ((((((this.pemain).getCoord()).getX() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).building == false)) {
+				if ((((((this.pemain).getCoord()).getX() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX() - 1][((this.pemain).getCoord()).getY()]).cekIsi == true))) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kiri");
 				}
 				else {
 					(this.pemain).move('a');
-					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map rumah");
 				}
 			}
 			break;
 
 			case'd':
 			{
-				if ((((((this.pemain).getCoord()).getX() + 1) > 8) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).building == false)) {
+				if ((((((this.pemain).getCoord()).getX() + 1) > 8) || ((this.mapu[((this.pemain).getCoord()).getX() + 1][((this.pemain).getCoord()).getY()]).cekIsi == true))) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
 					(this.pemain).move('d');
-					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map rumah");
 				}
 			}
 			break;
 
 			case'w':
 			{
-				if ((((((this.pemain).getCoord()).getY() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).building == false)) {
+				if ((((((this.pemain).getCoord()).getY() - 1) < 0) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 1]).cekIsi == true))) {
 					System.out.println("Maaf, anda tidak bisa pindah ke atas");
 				}
 				else {
 					(this.pemain).move('w');
-					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map rumah");
 				}
 			}
 			break;
 
 			case's':
 			{
-				if ((((((this.pemain).getCoord()).getY() + 1) > 15) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).cekIsi == false)) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).building == false)) {
+				if ((((((this.pemain).getCoord()).getY() + 1) > 15) || ((this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 1]).cekIsi == true))) {
 					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
 					(this.pemain).move('s');
-					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map utama");
+					System.out.println("Player sudah dipindahkan ke (" + ((this.pemain).getCoord()).getX() + "," + ((this.pemain).getCoord()).getY() + ") di map rumah");
 				}
 			}
 			break;

@@ -143,18 +143,21 @@ public class MapMain implements Serializable {
 				else {
 					if (((this.pemain).getCoord()).getX() == 5 && ((this.pemain).getCoord()).getY() == 3) {
 						System.out.println("Player sudah dipindahkan kedalam Rumah");
+						this.pemain.setCoord(0,15);
 						a.pemain = this.pemain;
 						this.pemain = null;
 						a.action(this,b,c);
 					}
-					if (this.pemain.getCoord() == new Koordinat(13,4)) {
+					if (((this.pemain).getCoord()).getX() == 13 && ((this.pemain).getCoord()).getY() == 4) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Sapi Domba");
+						this.pemain.setCoord(0,12);
 						c.pemain = this.pemain;
 						this.pemain = null;
 						c.action(this,a,b);
 					}
-					if (this.pemain.getCoord() == new Koordinat(4,16)) {
+					if (((this.pemain).getCoord()).getX() == 4 && ((this.pemain).getCoord()).getY() == 16) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Ayam");
+						this.pemain.setCoord(0,12);
 						b.pemain = this.pemain;
 						this.pemain = null;
 						b.action(this,a,c);
