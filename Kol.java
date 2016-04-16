@@ -3,7 +3,7 @@ public class Kol extends Tanaman {
 	/* METHOD */
 
 	public Kol(String nama, int x, int y){
-		super(nama, Produce.KOL, 10, x, y);
+		super(nama, Spesies.KOL, 10, x, y);
 	}
 
 	@Override
