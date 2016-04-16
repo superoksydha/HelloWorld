@@ -22,9 +22,9 @@ public class Hewan extends Resource{
 		}
 	}
 
-	public void kickTo(Koordinat k){
+	public void kickTo(int x, int y){
 	/* Mengubah koordinat lokasi hewan menjadi (x,y) */
-		super.setLokasi(k.getX(), k.getY());
+		super.setLokasi(x, y);
 	}
 
 	public void feed(){
