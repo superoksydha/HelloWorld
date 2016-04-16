@@ -11,7 +11,7 @@ public class Hewan extends Resource{
 		//getter: - (Hanya digunakan pada metode resetDay()), int totalFed() utk mengetahui berapa kali hewan telah diberi makan
 
 	/* METHOD */
-	public Hewan(String nama, String jenis, int x, int y){
+	public Hewan(String nama, Spesies jenis, int x, int y){
 	/* Konstruktor kelas hewan. Hewan tidak dapat dibuat tanpa informasi nama,
 	jenis, serta koordinat. */
 		/* Algoritma */
@@ -37,17 +37,17 @@ public class Hewan extends Resource{
 		return super.isCaredToday();
 	}
 
-	public String harvest(){
+	public Produce harvest(){
 	/* Mengembalikan hasil produksi hewan dalam bentuk String. */
 		if ((this.harvested == false) && (isCaredToday())){
 			switch (this.getJenis()){
-				case "sapi": return "susu";
-				case "domba": return "bulu";
-				case "ayam": return "telur";
-				default: return "";
+				case SAPI: return Produce.SUSU;
+				case DOMBA: return Produce.WOL;
+				case AYAM: return Produce.TELUR;
+				default: return Produce.NONE;
 			}
 		} else {
-			return "";
+			return Produce.NONE;
 		}
 	}
 

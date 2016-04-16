@@ -46,13 +46,15 @@ public abstract class Tanaman extends Resource{
 	/* Mengembalikan hasil produksi tanaman dalam bentuk String */
 		if (this.daytoharvest <= 0){
 			this.harvested = true;
-			switch (getJenis()){
+			switch (this.getJenis()){
 				case KOL: return Produce.KOL;
 				case JAGUNG: return Produce.JAGUNG;
 				case LOBAK: return Produce.LOBAK;
+				default: return Produce.NONE;
 			}
+		} else {
+			return Produce.NONE;
 		}
-		return Produce.NONE;
 	}
 
 	public void grow(){
