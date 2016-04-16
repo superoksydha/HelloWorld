@@ -30,13 +30,19 @@ public class TileSawah extends Tile {
 				case LOBAK: this.isi = new Lobak("Lobak", k.getX(), k.getY());
 				case JAGUNG: this.isi = new Jagung("Jagung", k.getX(), k.getY());
 			}
+			this.cekIsi = true;
 		}
+	}
+
+	public void removeTanaman(){
+		this.isi = null;
+		this.cekIsi = false;
 	}
 
 	public void resetDay(){
 		this.isi.resetDay();
 		if (!(this.isi.isAlive())){
-			this.isi = null;
+			this.removeTanaman();
 		}
 	}
 
