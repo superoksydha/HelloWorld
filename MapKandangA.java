@@ -10,7 +10,7 @@ public class MapKandangA implements Serializable {
 	private int x;
 	private int y;
 	public Player pemain;
-	
+
 	public MapKandangA(Player a){
 		this.x = 8;
 		this.y = 13;
@@ -33,7 +33,7 @@ public class MapKandangA implements Serializable {
 		this.mapu[6][11] = new TileHM();
 		this.pemain = a;
 	}
-	
+
 	public void action(MapMain a, MapRumah b, MapKandangSD c) {
 		//terima masukan tombol, lakukan aksi sesuai tombol
 		//daftar tombol:
@@ -48,7 +48,7 @@ public class MapKandangA implements Serializable {
 			c = cek objek
 			n = navigasi koordinat
 		*/
-		
+
 		System.out.println("Masukkan pilihan");
 		char pil = in.next().charAt(0);
 		switch(pil) {
@@ -63,7 +63,7 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case'd':
 			{
 				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
@@ -75,7 +75,7 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case'w':
 			{
 				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)] instanceof TileHM)) {
@@ -87,7 +87,7 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case's':
 			{
 				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)] instanceof TileHM)) {
@@ -99,7 +99,7 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case'e':
 			{
 				//cek equip tool player
@@ -138,7 +138,7 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case'm':
 			{
 					(this.pemain).setCoord(4,16);
@@ -148,16 +148,16 @@ public class MapKandangA implements Serializable {
 					a.action(b,this,c);
 			}
 			break;
-			
+
 			case't':
 			{
 				Waktu.printWaktu();
 				//cek waktu
 			}
 			break;
-			
+
 			case'n':
-			{ 
+			{
 				//navigasi koordinat
 				boolean ulang = true;
 				while(ulang) {
@@ -178,29 +178,29 @@ public class MapKandangA implements Serializable {
 				}
 			}
 			break;
-			
+
 			case'p':
 			{
 				//cek status, item, tools player, disini ada pilihan ganti tools juga
 			}
 			break;
-			
+
 			case'v':
 			{
 				//save, karena ini di map kandang, ga bisa save
 				System.out.println("Maaf, anda tidak bisa tidur disini");
 			}
 			break;
-			
+
 			case'x':
 			{
 				System.exit(0);
 				//exit
 			}
 			break;
-			
+
 			case'c':
-			{ 
+			{
 				//cek objek arah hadap player
 				if (!(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileHM)) {
 					System.out.println("Anda menghadap petak kosong, tidak ada yang bisa dicek");
@@ -214,4 +214,3 @@ public class MapKandangA implements Serializable {
 		this.action(a,b,c);
 	}
 }
-
