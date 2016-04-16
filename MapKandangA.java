@@ -225,9 +225,7 @@ public class MapKandangA implements Serializable {
 	public void resetDay(){
 		for (int i = 0; i <=7; i++) {
 			for (int j = 0; j <=12; j++) {
-				if (this.mapu[i][j] instanceof TileKandangAyam){
-					this.mapu[i][j].resetDay();
-				}
+				resetDay();
 			}
 		}
 	}
