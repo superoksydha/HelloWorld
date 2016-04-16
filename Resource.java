@@ -5,7 +5,10 @@ public abstract class Resource{
 	//Nama yang diberikan pemain pada sumber daya
 		//setter: - (Diset pada konstruktor dan tidak dapat diubah)
 		//getter: String getNama();
-	private String jenis;
+	public enum Spesies{
+		KOL, LOBAK, JAGUNG, SAPI, DOMBA, AYAM
+	}
+	private Spesies jenis;
 	//Spesies tanaman
 		//setter: - (Diset pada konstruktor dan tidak dapat diubah)
 		//getter: String getJenis();
@@ -21,9 +24,12 @@ public abstract class Resource{
 	//Apakah sumber daya sudah dirawat untuk hari itu
 		//setter: void care(); resetCare();
 		//getter: boolean isCaredToday();
+	public enum Produce{
+		KOL, LOBAK, JAGUNG, SUSU, WOL, TELUR, NONE
+	}
 
 	/* METHOD */
-	public Resource(String nama, String jenis, int x, int y){
+	public Resource(String nama, Spesies jenis, int x, int y){
 	/* Konstruktor kelas Resource. Resource tidak dapat dibuat tanpa informasi
 	nama, jenis, serta koordinat. */
 		this.nama = nama;
@@ -38,7 +44,7 @@ public abstract class Resource{
 		return this.nama;
 	}
 
-	public String getJenis(){
+	public Spesies getJenis(){
 	/* Mengembalikan spesies sumebr daya dalam bentuk String */
 		return this.jenis;
 	}

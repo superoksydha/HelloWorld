@@ -19,7 +19,7 @@ public abstract class Tanaman extends Resource{
 		//getter: boolean isHarvested();
 
 	/* METHOD */
-	public Tanaman(String nama, String jenis, int daytoharvest, int x, int y){
+	public Tanaman(String nama, Spesies jenis, int daytoharvest, int x, int y){
 	/* Konstruktor kelas tanaman. Tanaman tidak dapat dibuat tanpa nama, jenis,
 	daytoharvest, serta koordinat. */
 		/* Algoritma */
@@ -42,14 +42,17 @@ public abstract class Tanaman extends Resource{
 		return this.isCaredToday();
 	}
 
-	public String harvest(){
+	public Produce harvest(){
 	/* Mengembalikan hasil produksi tanaman dalam bentuk String */
 		if (this.daytoharvest <= 0){
 			this.harvested = true;
-			return getJenis();
-		} else {
-			return "";
+			switch (getJenis()){
+				case KOL: return Produce.KOL;
+				case JAGUNG: return Produce.JAGUNG;
+				case LOBAK: return Produce.LOBAK;
+			}
 		}
+		return Produce.NONE;
 	}
 
 	public void grow(){

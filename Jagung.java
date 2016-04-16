@@ -3,7 +3,7 @@ public class Jagung extends Tanaman {
 	/* METHOD */
 
 	public Jagung(String nama, int x, int y){
-		super(nama, "Jagung", 15, x, y);
+		super(nama, Produce.JAGUNG, 15, x, y);
 	}
 
 	@Override

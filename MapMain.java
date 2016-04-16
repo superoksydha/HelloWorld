@@ -10,6 +10,8 @@ public class MapMain implements Serializable {
 	private int x;
 	private int y;
 	public Player pemain;
+	public Tanaman[] crops;
+	public int planted;
 
 	public MapMain(Player a){
 		this.x = 32;
