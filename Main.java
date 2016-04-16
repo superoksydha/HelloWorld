@@ -75,7 +75,9 @@ public class Main {
 						farm.action(home, chickencoop, barn);
 					} catch (saveException e) {
 						if (!((time.getJJ() > 3) && (time.getJJ() < 6))){
-							//reset everything
+							farm.resetDay();
+							barn.resetDay();
+							chickencoop.resetDay();
 						}
 					} catch (wakeException e) {
 						time.setJJ(06);
