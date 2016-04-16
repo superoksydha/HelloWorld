@@ -42,11 +42,8 @@ public class Hewan extends Resource{
 		if ((this.harvested == false) && (isCaredToday())){
 			switch (this.getJenis()){
 				case "sapi": return "susu";
-				break;
 				case "domba": return "bulu";
-				break;
 				case "ayam": return "telur";
-				break;
 				default: return "";
 			}
 		} else {
