@@ -10,8 +10,6 @@ public class MapMain implements Serializable {
 	private int x;
 	private int y;
 	public Player pemain;
-	public Tanaman[] crops;
-	public int planted;
 
 	public MapMain(Player a){
 		this.x = 32;
@@ -221,13 +219,16 @@ public class MapMain implements Serializable {
 				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).building == true) {
 					System.out.println("Di hadapan anda ada bangunan");
 				}
-				else if (((((this.pemain).inFrontOf()).getX() <= 29) || (((this.pemain).inFrontOf()).getX() >= 10)) && ((((this.pemain).inFrontOf()).getY() <= 26) || (((this.pemain).inFrontOf()).getY() >= 7))) {
+				else if (this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileSawah) {
 					if (((TileSawah) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
 						System.out.println((((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).getNama());
 					}
 					else {
 						System.out.println("Di hadapan anda ada petak sawah");
 					}
+				}
+				else {
+					System.out.println("Di hadapan anda tidak ada apa-apa");
 				}
 			}
 			break;
