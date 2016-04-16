@@ -10,22 +10,10 @@ public class MapMain implements Serializable {
 	private int x;
 	private int y;
 	public Player pemain;
-	public Tanaman[] crops;
-	public int planted;
-
-	/*public void plant(Spesies biji, int x, int y){
-		switch biji{
-			case KOL: crops[planted] = new Kol(String.valueOf(planted), x, y);
-			case JAGUNG: crops[planted] = new Jagung(String.valueOf(planted), x, y);
-			case LOBAK: crops[planted] = new Jagung(String.valueOf(planted), x, y);
-		}
-		planted++;
-	}*/
 
 	public MapMain(Player a){
 		this.x = 32;
 		this.y = 29;
-		this.planted = 0;
 		for (int i = 0; i <= 31; i++) {
 			for (int j = 0; j <=28; j++) {
 					this.mapu[i][j] = new TileK();
@@ -149,11 +137,11 @@ public class MapMain implements Serializable {
 
 			case'm':
 			{
-				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isPintu != true) {
+				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isPintu == false) {
 					System.out.println("Anda tidak menghadap ke pintu...");
 				}
 				else {
-					if (this.pemain.getCoord() == new Koordinat(5,3)) {
+					if (((this.pemain).getCoord()).getX() == 5 && ((this.pemain).getCoord()).getY() == 3) {
 						System.out.println("Player sudah dipindahkan kedalam Rumah");
 						a.pemain = this.pemain;
 						this.pemain = null;
