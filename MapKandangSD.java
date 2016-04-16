@@ -107,32 +107,33 @@ public class MapKandangSD implements Serializable {
 					System.out.println("Anda berada dalam kandang, tool yang anda equip tidak ada gunanya disini");
 				}
 				else {
-					if (((this.pemain).tool).getName() != "move") {
+					if (((this.pemain).tool).getName() == "move") {
 						if (((TileKandangSapiD)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
 							switch(this.pemain.getOrient()) {
-							case TOP : {
-								(TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((this.mapu[(TileKandangA)(this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX()), ((TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY() - 1));
-								(TileKandangA)(this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() - 2]).newHewan((TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
-								(TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).removeHewan();
-							}
-							break;
-							case BOTTOM : {
-								(TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((this.mapu[(TileKandangA)(this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX()), ((TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY() + 1));
-								(TileKandangA)(this.mapu[((this.pemain).getCoord()).getX()][((this.pemain).getCoord()).getY() + 2]).newHewan((TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
-								(TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).removeHewan();							}
-							break;
-							case RIGHT : {
-								(TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((this.mapu[(TileKandangA)(this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX() + 1), ((TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY()));
-								(TileKandangA)(this.mapu[((this.pemain).getCoord()).getX() + 2][((this.pemain).getCoord()).getY()]).newHewan((TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
-								(TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).removeHewan();
-							}
-							break;
-							case LEFT : {
-								(TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((this.mapu[(TileKandangA)(this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX() - 1), ((TileKandangA)(this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY()));
-								(TileKandangA)(this.mapu[((this.pemain).getCoord()).getX() - 2][((this.pemain).getCoord()).getY()]).newHewan((TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
-								(TileKandangA)(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).removeHewan();
-							}
-							break;
+								case TOP : {
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX()), (((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY() - 1));
+									((TileKandangSapiD) this.mapu[this.pemain.getCoord().getX()][this.pemain.getCoord().getY() - 2]).newHewan(((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).removeHewan();
+								}
+								break;
+								case BOTTOM : {
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX()), (((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY() + 1));
+									((TileKandangSapiD) this.mapu[this.pemain.getCoord().getX()][this.pemain.getCoord().getY() + 2]).newHewan(((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).removeHewan();
+									}
+								break;
+								case RIGHT : {
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX() + 1), (((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY()));
+									((TileKandangSapiD) this.mapu[this.pemain.getCoord().getX() + 2][this.pemain.getCoord().getY()]).newHewan(((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).removeHewan();
+								}
+								break;
+								case LEFT : {
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.kickTo((((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getX() - 1), (((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).isi.getLokasi().getY()));
+									((TileKandangSapiD) this.mapu[this.pemain.getCoord().getX() - 2][this.pemain.getCoord().getY()]).newHewan(((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi);
+									((TileKandangSapiD) this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()]).removeHewan();
+								}
+								break;
 							}
 						}
 						else {
@@ -225,13 +226,12 @@ public class MapKandangSD implements Serializable {
 		}
 		this.action(a,b,c);
 	}
-
+	
 	public void resetDay(){
 		for (int i = 0; i <=7; i++) {
 			for (int j = 0; j <=12; j++) {
-				resetDay();
+				this.mapu[i][j].resetDay();
 			}
 		}
 	}
-
 }

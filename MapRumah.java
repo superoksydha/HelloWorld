@@ -150,7 +150,7 @@ public class MapRumah {
 
 			case'p':
 			{
-				//cek status, item, tools player, disini ada pilihan ganti tools juga
+				//cek status, item, tools player, disini ada pilihan ganti tools juga (yang bikin inventory player siapa??)
 			}
 			break;
 
@@ -225,7 +225,7 @@ public class MapRumah {
 
 			case 'h':
 			{
-				//do shopping
+				//do shopping (yang bikin inventory siapa??)
 			}
 			break;
 		}

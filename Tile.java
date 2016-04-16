@@ -14,5 +14,5 @@ public class Tile {
 		this.building = false;
 	}
 
-	public resetDay(){}
+	public void resetDay(){}
 }
