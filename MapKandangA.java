@@ -54,7 +54,7 @@ public class MapKandangA implements Serializable {
 		switch(pil) {
 			case 'a':
 			{
-				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true))) {
+				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kiri");
 				}
 				else {
@@ -66,7 +66,7 @@ public class MapKandangA implements Serializable {
 			
 			case'd':
 			{
-				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true))) {
+				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
@@ -78,7 +78,7 @@ public class MapKandangA implements Serializable {
 			
 			case'w':
 			{
-				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true))) {
+				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke atas");
 				}
 				else {
@@ -90,7 +90,7 @@ public class MapKandangA implements Serializable {
 			
 			case's':
 			{
-				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true))) {
+				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
@@ -108,28 +108,23 @@ public class MapKandangA implements Serializable {
 				}
 				else {
 					if (((this.pemain).tool).getName() != "move") {
-						if (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
-							switch ((this.pemain).getOrient()) {
-								case TOP: {
-									((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY() - 1]).isi = ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi;
-								}
-								break;
-								case BOTTOM: {
-									((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY() + 1]).isi = ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi;
-								}
-								break;
-								case RIGHT: {
-									((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX() + 1][((this.pemain).inFrontOf()).getY()]).isi = ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi;
-								}
-								break;
-								case LEFT: {
-									((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX() - 1][((this.pemain).inFrontOf()).getY()]).isi = ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi;
-								}
-								break;
+						switch(this.pemain.getOrient()) {
+							case TOP : {
+								this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()].isi.kickTo((this.mapu[this.pemain.inFrontOf().getX()][this.pemain.inFrontOf().getY()].isi.getLokasi().getX()), )
 							}
-						}
-						else {
-							System.out.println("Anda tidak dapat memindahkan objek didepan anda");
+							break;
+							case BOTTOM : {
+								
+							}
+							break;
+							case RIGHT : {
+								
+							}
+							break;
+							case LEFT : {
+								
+							}
+							break;
 						}
 					}
 					else {

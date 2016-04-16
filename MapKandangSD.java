@@ -54,7 +54,7 @@ public class MapKandangSD implements Serializable {
 		switch(pil) {
 			case 'a':
 			{
-				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == false))) {
+				if ((((this.pemain).getCoord()).getX() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kiri");
 				}
 				else {
@@ -66,7 +66,7 @@ public class MapKandangSD implements Serializable {
 			
 			case'd':
 			{
-				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == false))) {
+				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
@@ -78,7 +78,7 @@ public class MapKandangSD implements Serializable {
 			
 			case'w':
 			{
-				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == false))) {
+				if ((((this.pemain).getCoord()).getY() - 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() - 1)] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke atas");
 				}
 				else {
@@ -90,7 +90,7 @@ public class MapKandangSD implements Serializable {
 			
 			case's':
 			{
-				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == false))) {
+				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY() + 1)] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
