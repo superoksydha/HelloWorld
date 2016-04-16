@@ -114,15 +114,15 @@ public class MapKandangA implements Serializable {
 							}
 							break;
 							case BOTTOM : {
-								
+
 							}
 							break;
 							case RIGHT : {
-								
+
 							}
 							break;
 							case LEFT : {
-								
+
 							}
 							break;
 						}
@@ -212,5 +212,15 @@ public class MapKandangA implements Serializable {
 			break;
 		}
 		this.action(a,b,c);
+	}
+
+	public resetDay(){
+		for (int i = 0; i <=7; i++) {
+			for (int j = 0; j <=12; j++) {
+				if (this.mapu[i][j] instanceof TileKandangAyam){
+					this.mapu[i][j].resetDay();
+				}
+			}
+		}
 	}
 }
