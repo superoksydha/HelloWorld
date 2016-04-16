@@ -239,4 +239,10 @@ public class MapMain implements Serializable {
 		}
 		this.action(a,b,c);
 	}
+
+	public void resetDay(){
+		for (int j = 7; j<= 26; j++) {
+			resetDay();
+		}
+	}
 }
