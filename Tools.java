@@ -12,16 +12,16 @@ Tools terdiri dari (hotkey + name)
 0. move (cost 0)
 */
 
-public class Tools extends Inventory{
+public class Tools extends Inventory {
 	int cost;
 	int jumlah;
-	
+
 	public Tools(String name, int cost){
 		super(name);
 		this.cost = cost;
 		this.jumlah = 1;
 	}
-	
+
 	//Setiap pembelian biji, jumlahnya bertambah 1
 	public void incrementTools(){
 		if (this.getName()=="bijiLobak" || this.getName()=="bijiKol" || this.getName()=="bijiJagung") {

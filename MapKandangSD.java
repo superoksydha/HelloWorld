@@ -103,7 +103,7 @@ public class MapKandangSD implements Serializable {
 			case'e':
 			{
 				//cek equip tool player
-				if ((((this.pemain).tool).getName() != "hand") && (((this.pemain).tool).getName() != "move")) {
+				if ((((this.pemain).tool).getName() != "hand") && (((this.pemain).tool).getName() != "move") && (((this.pemain).tool).getName() != "gunting") && (((this.pemain).tool).getName() != "milker")) {
 					System.out.println("Anda berada dalam kandang, tool yang anda equip tidak ada gunanya disini");
 				}
 				else {
@@ -141,11 +141,44 @@ public class MapKandangSD implements Serializable {
 						}
 					}
 					else {
-						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileHM) {
-							//ambil item dari bag taruh di tile tempat hewan makan
+						if (((this.pemain).tool).getName() == "hand") {
+							if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileHM) {
+								System.out.println("Masukkan nomor item yang ingin ditaruh di tempat makanan hewan");
+								int piltar = in.nextInt();
+								((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = this.pemain.bagI[piltar];
+								this.pemain.bagI[piltar] = null;
+							}
+							else {
+								System.out.println("Anda tidak dapat menaruh item didepan anda");
+							}
 						}
 						else {
-							System.out.println("Anda tidak dapat menaruh item didepan anda");
+							if ( (((this.pemain).tool).getName() == "milker") && (((TileKandangSapiD)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) ) {
+								int urut = 0;
+								while(this.pemain.bagI[urut] != null) {
+									urut = urut + 1;
+								}
+								if (urut == 12) {
+									System.out.println("Bag anda penuh");
+								}
+								else {
+									this.pemain.bagI[urut] = new Items("susu",100);
+								}
+							}
+							else {
+								if(((TileKandangSapiD)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
+									int urut = 0;
+									while(this.pemain.bagI[urut] != null) {
+										urut = urut + 1;
+									}
+									if (urut == 12) {
+										System.out.println("Bag anda penuh");
+									}
+									else {
+										this.pemain.bagI[urut] = new Items("wool",100);
+									}
+								}
+							}
 						}
 					}
 				}

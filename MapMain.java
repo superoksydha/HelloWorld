@@ -125,13 +125,111 @@ public class MapMain implements Serializable {
 
 			case'e':
 			{
-				//cek equip tool player
-				/*if () {
+				switch (((this.pemain).tool).getName()) {
+				
+					case "milker"	: 
+					{
+						System.out.println("Milker tidak dapat digunakan disini"); break;
+					}
+					
+					case "gunting"	: 
+					{
+						System.out.println("Gunting tidak dapat digunakan disini"); break;
+					}
+									 
+					case "move"		: 
+					{
+						System.out.println("Move tidak dapat digunakan disini"); break;
+					}
+					
+					case "hand" : 
+					{
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getDayToHarvest() <= 0) {
+								for (int i = 0; i<12; i++) {
+									if ((this.pemain).bagI[i] != null) {
+										Resource.Produce hasilpanen = ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.harvest();
+										
+										switch (hasilpanen) {
+											case KOL : {
+															(this.pemain).bagI[i] = new Items("Kol", 100); break;
+													   }
+											case JAGUNG : {
+															(this.pemain).bagI[i] = new Items("Jagung", 100); break;
+													   }
+											case LOBAK : {
+															(this.pemain).bagI[i] = new Items("Lobak", 100); break;
+													   }
+										}
+									}
+								}
+							} else {
+								System.out.println("Tidak ada slot di tas, panen dibatalkan");
+							}
+						} else {
+							System.out.println("Tidak ada yang bisa dipanen");
+						}
+						 break;
+					}
+						 
+					case "pacul" : 
+					{
+						((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).paculed = true; break;
+					}
+									  
+					case "penyiramTanaman" : 
+					{
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.water();
+						}
+						 break;
+					}
 
+					case "bijiKol" : 
+					{
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.KOL, (this.pemain).inFrontOf());
+							(this.pemain).bagT[5].jumlah--;
+							
+						} else {
+							System.out.println("Tidak dapat menanam biji kol");	
+						}
+						 break;
+					}
+									  
+					case "bijiLobak" : 
+					{
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.LOBAK, (this.pemain).inFrontOf());
+							(this.pemain).bagT[4].jumlah--;
+						} else {
+							System.out.println("Tidak dapat menanam biji lobak");
+						}							
+						 break;
+					}
+									  
+					case "bijiJagung" : 
+					{
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.JAGUNG, (this.pemain).inFrontOf());
+							(this.pemain).bagT[6].jumlah--;
+						} else {
+							System.out.println("Tidak dapat menanam biji jagung");				
+						}
+						 break;
+					}
+									 
+					case "arit"		 : 
+					{
+						//HARUS DICEK DULU APAKAH TILE YANG DIDEPAN PLAYER ITU TANAMAN
+						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = null;
+						} else {
+							System.out.println("Tidak ada tanaman untuk diarit");
+						}
+						 break;
+					}
 				}
-				else {
-
-				}*/
 			}
 			break;
 

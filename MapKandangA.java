@@ -143,9 +143,27 @@ public class MapKandangA implements Serializable {
 					else {
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileHM) {
 							//ambil item dari bag taruh di tile tempat hewan makan
+							System.out.println("Masukkan nomor item yang ingin ditaruh di tempat makanan hewan");
+							int piltar = in.nextInt();
+							((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = this.pemain.bagI[piltar];
+							this.pemain.bagI[piltar] = null;
 						}
 						else {
-							System.out.println("Anda tidak dapat menaruh item didepan anda");
+							if ( ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangAyam) && (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) ) {
+								int urut = 0;
+								while(this.pemain.bagI[urut] != null) {
+									urut = urut + 1;
+								}
+								if (urut == 12) {
+									System.out.println("Bag anda penuh");
+								}
+								else {
+									this.pemain.bagI[urut] = new Items("telur",100);
+								}
+							}
+							else {
+								System.out.println("Anda tidak dapat menggunakan tool hand untuk tile didepan anda");
+							}
 						}
 					}
 				}

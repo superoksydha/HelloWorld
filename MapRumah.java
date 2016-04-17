@@ -4,12 +4,16 @@
 import java.util.Scanner;
 import java.io.*;
 
-public class MapRumah {
+public class MapRumah implements Serializable {
 	Scanner in = new Scanner(System.in);
-	private Tile mapu[][] = new Tile[9][16];
+	public Tile mapu[][] = new Tile[9][16];
 	private int x;
 	private int y;
 	public Player pemain;
+	private int menushop;
+	private int menubeli;
+	private int sumGold;
+
 
 	public MapRumah(Player a){
 		this.x = 9;
@@ -159,42 +163,14 @@ public class MapRumah {
 				try {
 					FileOutputStream out = new FileOutputStream("mapRumah.ser");
 					ObjectOutputStream oos = new ObjectOutputStream(out);
-					oos.writeObject(this.mapu);
-					oos.close();
-				} catch(Exception ex){
-					ex.printStackTrace();
-				}
-				try {
-					FileOutputStream out = new FileOutputStream("player.ser");
-					ObjectOutputStream oos = new ObjectOutputStream(out);
-					oos.writeObject(this.pemain);
-					oos.close();
-				} catch(Exception ex){
-					ex.printStackTrace();
-				}
-				try {
-					FileOutputStream out = new FileOutputStream("mapMain.ser");
-					ObjectOutputStream oos = new ObjectOutputStream(out);
-					oos.writeObject(a.mapu);
-					oos.close();
-				} catch(Exception ex){
-					ex.printStackTrace();
-				}
-				try {
-					FileOutputStream out = new FileOutputStream("mapKanA.ser");
-					ObjectOutputStream oos = new ObjectOutputStream(out);
-					oos.writeObject(b.mapu);
-					oos.close();
-				} catch(Exception ex){
-					ex.printStackTrace();
-				}	
-				try {
-					FileOutputStream out = new FileOutputStream("mapKanSD.ser");
-					ObjectOutputStream oos = new ObjectOutputStream(out);
-					oos.writeObject(c.mapu);
-					oos.close();
-				} catch(Exception ex){
-					ex.printStackTrace();
+					oos.writeObject (pemain);
+					oos.writeObject (this.mapu);
+					oos.writeObject (a.mapu);
+					oos.writeObject (b.mapu);
+					oos.writeObject (c.mapu);
+					oos.close ();
+				} catch (Exception e) {
+					e.printStackTrace ();
 				}
 			}
 			break;
@@ -225,7 +201,128 @@ public class MapRumah {
 
 			case 'h':
 			{
-				//do shopping (yang bikin inventory siapa??)
+				System.out.println("---MENU JUAL BELI---");
+				System.out.println("\t1. Jual");
+				System.out.println("\t2. Beli");
+
+				System.out.print("\n\n Pilih menu anda : "); menushop = in.nextInt();
+
+				switch (menushop) {
+					case 1 :
+					{
+						sumGold = 0;
+						for(int i=0 ; i<12; i++) {
+							sumGold = sumGold + this.pemain.bagI[i].sellPrice;
+							this.pemain.bagI[i] = null;
+						}
+						this.pemain.gold = this.pemain.gold + sumGold;
+						System.out.println("\n\nSemua barang di tas telah terjual");
+						sumGold = 0;
+						break;
+					}
+
+					case 2 :
+					{
+						System.out.println("\n\n---MENU BELI---");
+						System.out.println("\t1. Beli biji kol");
+						System.out.println("\t2. Beli biji lobak");
+						System.out.println("\t3. Beli biji jagung");
+						System.out.println("\t4. Beli sapi");
+						System.out.println("\t4. Beli domba");
+						System.out.println("\t4. Beli ayam");
+
+						System.out.print("\n\n Pilih barang yang akan dibeli : "); menubeli = in.nextInt();
+
+						switch (menubeli) {
+							case 1 :
+							{
+								(this.pemain).bagT[5].jumlah++;
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							case 2 :
+							{
+								(this.pemain).bagT[4].jumlah++;
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							case 3 :
+							{
+								(this.pemain).bagT[6].jumlah++;
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							case 4 :
+							{
+								//beli sapi
+								int fax = 0;
+								int fbx = 0;
+								boolean stop = false;
+								for(int ax = 0; ax <= 7; ax++) {
+									for(int bx = 0;bx <= 12; bx++) {
+										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
+											stop = true;
+											fax = ax;
+											fbx = bx;
+										}
+									}
+								}
+								((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("sapi",Resource.Spesies.SAPI,fax,fbx);
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							case 5 :
+							{
+								//beli domba
+								int fax = 0;
+								int fbx = 0;
+								boolean stop = false;
+								for(int ax = 0; ax <= 7; ax++) {
+									for(int bx = 0;bx <= 12; bx++) {
+										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
+											stop = true;
+											fax = ax;
+											fbx = bx;
+										}
+									}
+								}
+								((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("domba",Resource.Spesies.DOMBA,fax,fbx);
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							case 6 :
+							{
+								//beli ayam
+								int fax = 0;
+								int fbx = 0;
+								boolean stop = false;
+								for(int ax = 0; ax <= 7; ax++) {
+									for(int bx = 0;bx <= 12; bx++) {
+										if((((TileKandangAyam) b.mapu[ax][bx]).isi == null) && (stop == false)) {
+											stop = true;
+											fax = ax;
+											fbx = bx;
+										}
+									}
+								}
+								((TileKandangAyam) b.mapu[fax][fbx]).isi = new Hewan("ayam",Resource.Spesies.AYAM,fax,fbx);
+								(this.pemain).gold = (this.pemain).gold - 50;
+								break;
+							}
+
+							default : System.out.println("Masukkan Anda salah!"); break;
+						}
+						break;
+					}
+
+					default : System.out.println("Masukan Anda salah!"); break;
+				}
+
 			}
 			break;
 		}

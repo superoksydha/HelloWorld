@@ -1,4 +1,6 @@
-public class Koordinat {
+import java.io.*;
+
+public class Koordinat implements Serializable {
 	private int x;
 	private int y;
 

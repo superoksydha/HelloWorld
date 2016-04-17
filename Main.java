@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 
@@ -85,9 +86,55 @@ public class Main {
 					}
 					break	;
 				case 2:
-				System.out.println("Loading... \n");
+					System.out.println("Loading... \n");
 					System.out.println("\n");
-					//load game
+					player = new Player("test", 7, 1);
+					farm = new MapMain(player);
+					home = new MapRumah(player);
+					chickencoop = new MapKandangA(player);
+					barn = new MapKandangSD(player);
+					time = new Waktu();
+					try {
+						FileInputStream saveFile = new FileInputStream("mapRumah.ser");
+						ObjectInputStream save = new ObjectInputStream(saveFile);
+						player = (Player) save.readObject ();
+						home.mapu = (Tile[][]) save.readObject ();
+						farm.mapu = (Tile[][]) save.readObject ();
+						chickencoop.mapu = (Tile[][]) save.readObject ();
+						barn.mapu = (Tile[][]) save.readObject ();
+						farm = new MapMain(player);
+						home = new MapRumah(player);
+						chickencoop = new MapKandangA(player);
+						barn = new MapKandangSD(player);
+						time.start();
+						System.out.println("\n    Selamat datang, " + player.getNama() + "!");
+						System.out.println("");
+						System.out.println("                       +--------------------------+");
+						System.out.println("                       | Pilihan                  |");
+						System.out.println("                       +--------------------------+");
+						System.out.println("                       | w, a, s, d = gerakan     |");
+						System.out.println("                       | e = menggunakan tool     |");
+						System.out.println("                       | x = exit                 |");
+						System.out.println("                       | m = masuk bangunan       |");
+						System.out.println("                       | t = cek waktu            |");
+						System.out.println("                       | p = cek status player    |");
+						System.out.println("                       | v = save                 |");
+						System.out.println("                       | c = cek objek            |");
+						System.out.println("                       | n = navigasi koordinat   |");
+						System.out.println("                       +--------------------------+");
+						home.action(farm, chickencoop, barn);
+					} catch (saveException e) {
+						if (!((time.getJJ() > 3) && (time.getJJ() < 6))){
+							farm.resetDay();
+							barn.resetDay();
+							chickencoop.resetDay();
+						}
+					} catch (wakeException e) {
+						time.setJJ(06);
+						time.setMM(00);
+					} catch (Exception e) {
+						e.printStackTrace ();
+					}
 					break;
 				case 3:
 					System.out.println("\n    Terima kasih. Selamat tinggal!");

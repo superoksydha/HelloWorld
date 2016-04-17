@@ -1,4 +1,6 @@
-public class Player {
+import java.io.*;
+
+public class Player implements Serializable {
 	private String nama;
 	private Koordinat coord;
 	public Tools tool; // Tools yang dipilih

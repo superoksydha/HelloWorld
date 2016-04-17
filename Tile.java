@@ -1,7 +1,9 @@
 //Eliezer Christanto
 //18213020
 
-public class Tile {
+import java.io.*;
+
+public class Tile implements Serializable {
 	public boolean cekIsi; //false = kosong, true = ada objek
 	public boolean building; // true = building, ga bisa dilewatin
 	public boolean isPintu; // true = pintu, false = bukan
