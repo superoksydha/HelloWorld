@@ -6,14 +6,26 @@ public class Player {
 		TOP, BOTTOM, LEFT, RIGHT
 	}
 	private Orientation orient;
-	private Tools[] bagT = new Tools[10];
-	private Items[] bagI = new Items[6];
+	public Tools[] bagT = new Tools[10];
+	public Items[] bagI = new Items[12];
 	public int gold;
 
 	public Player (String nama, int x, int y) {
 		this.nama = nama;
 		this.coord = new Koordinat(x, y);
 		this.gold = 0;
+		this.orient = Orientation.TOP;
+		this.bagT[0] = new Tools("hand", 0);
+		this.bagT[1] = new Tools("pacul", 0);
+		this.bagT[2] = new Tools("penyiramTanaman", 0);
+		this.bagT[3] = new Tools("arit", 0);
+		this.bagT[4] = new Tools("bijiLobak", 50);
+		this.bagT[5] = new Tools("bijiKol", 60);
+		this.bagT[6] = new Tools("bijiJagung", 70);
+		this.bagT[7] = new Tools("gunting", 0);
+		this.bagT[8] = new Tools("milker", 0);
+		this.bagT[9] = new Tools("move", 0);
+		this.selectTool(0);
 	}
 
 	public String getNama(){

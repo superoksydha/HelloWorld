@@ -199,7 +199,72 @@ public class MapMain implements Serializable {
 
 			case'p':
 			{
-				//cek status, item, tools player, disini ada pilihan ganti tools juga
+				System.out.println(this.pemain.getNama() + " memiliki tools sebagai berikut:");
+				for(int i = 0; i<9; i++) {
+					System.out.println(this.pemain.bagT[i].getName() + " sebanyak " + this.pemain.bagT[i].jumlah);
+				}
+				System.out.println("Tools yang sedang di-equip adalah: " + this.pemain.tool.getName());
+				System.out.println("Inventory sebagai berikut:");
+				for(int i = 0; i<12; i++) {
+					if(this.pemain.bagI[i] != null) {
+						System.out.println(this.pemain.bagI[i].getName());
+					}
+				}
+				System.out.println("Gold yang dimiliki adalah: " + this.pemain.gold);
+				System.out.println("0-9: Pilih tool equip");
+				System.out.println("x: back to map");
+				System.out.println("Masukkan pilihan anda");
+				char pilak = in.next().charAt(0);
+				switch(pilak) {
+					case '0': {
+						this.pemain.selectTool(0);
+					}
+					break;
+					case '1': {
+						this.pemain.selectTool(1);
+					}
+					break;
+					case '2': {
+						this.pemain.selectTool(2);
+					}
+					break;
+					case '3': {
+						this.pemain.selectTool(3);
+					}
+					break;
+					case '4': {
+						this.pemain.selectTool(4);
+					}
+					break;
+					case '5': {
+						this.pemain.selectTool(5);
+					}
+					break;
+					case '6': {
+						this.pemain.selectTool(6);
+					}
+					break;
+					case '7': {
+						this.pemain.selectTool(7);
+					}
+					break;
+					case '8': {
+						this.pemain.selectTool(8);
+					}
+					break;
+					case '9': {
+						this.pemain.selectTool(9);
+					}
+					break;
+					case 'x': {
+						System.out.println("OK");
+					}
+					break;
+					default: {
+						System.out.println("\n    Pilihan salah. Anda kembali ke map");
+					}
+					break;
+				}
 			}
 			break;
 
@@ -212,6 +277,7 @@ public class MapMain implements Serializable {
 
 			case'x':
 			{
+				System.out.println("Terimakasih telah bermain");
 				System.exit(0);
 				//exit
 			}
@@ -234,6 +300,10 @@ public class MapMain implements Serializable {
 				else {
 					System.out.println("Di hadapan anda tidak ada apa-apa");
 				}
+			}
+			break;
+			default: {
+				System.out.println("\n    Pilihan salah. Mohon ulangi");
 			}
 			break;
 		}
