@@ -1,7 +1,7 @@
 1. Kalau pakai tool di tile selain tile ladang gamenya masih crash
-2. Kalau coba harvest di tanaman yang belum siap gamenya masih crash
-3. Gaada metode untuk ngecek di depannya ada tanaman atau nggak
-4. Di rumah ga bisa ganti tool
+2. Kalau coba harvest di tanaman yang belum siap gamenya masih crash (bukannya harusnya pas ngelakuin harvest ngecek dulu ya?)
+3. Gaada metode untuk ngecek di depannya ada tanaman atau nggak (done)
+4. Di rumah ga bisa ganti tool (done)
 5. Hewan bisa dibeli meski gold 0, gold jadi minus.
-6. Aku lg di map kandang habis beli sapi, aku ada di tile 1,12 dan aku gerak ke bawah. Ada error arrayoutofboundsexception
+6. Aku lg di map kandang habis beli sapi, aku ada di tile 1,12 dan aku gerak ke bawah. Ada error arrayoutofboundsexception (done)
 7. 
