@@ -8,6 +8,7 @@ public class TileKandangAyam extends Tile {
 	public TileKandangAyam() {
 		super();
 		this.isi = null;
+		this.cekIsi = false;
 		this.building = true;
 	}
 
@@ -26,9 +27,11 @@ public class TileKandangAyam extends Tile {
 	}
 
 	public void resetDay(){
-		this.isi.resetDay();
-		if (!(this.isi.isAlive())){
-			this.removeHewan();
+		if (this.cekIsi) {
+			this.isi.resetDay();
+			if (!(this.isi.isAlive())){
+				this.removeHewan();
+			}
 		}
 	}
 }

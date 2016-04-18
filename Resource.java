@@ -1,4 +1,6 @@
-public abstract class Resource{
+import java.io.*;
+
+public abstract class Resource implements Serializable{
 
 	/* ATRIBUT */
 	private String nama;
@@ -16,7 +18,7 @@ public abstract class Resource{
 	//Koordinat lokasi sumber daya pada peta
 		//setter: void setLokasi(int x, int y);
 		//getter: Koordinat getLokasi();
-	private boolean alive;
+	public boolean alive;
 	//Mengembalikan apakah hewan hidup atau sudah mati
 		//setter: kill();
 		//getter: boolean isAlive();

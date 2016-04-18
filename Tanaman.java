@@ -44,17 +44,18 @@ public abstract class Tanaman extends Resource{
 
 	public Produce harvest(){
 	/* Mengembalikan hasil produksi tanaman dalam bentuk String */
-		if (this.daytoharvest <= 0){
-			this.harvested = true;
-			switch (this.getJenis()){
-				case KOL: return Produce.KOL;
-				case JAGUNG: return Produce.JAGUNG;
-				case LOBAK: return Produce.LOBAK;
-				default: return Produce.NONE;
+		if (this.alive) {
+			if (this.daytoharvest <= 0){
+				this.harvested = true;
+				switch (this.getJenis()){
+					case KOL: return Produce.KOL;
+					case JAGUNG: return Produce.JAGUNG;
+					case LOBAK: return Produce.LOBAK;
+					default: return Produce.NONE;
+				}
 			}
-		} else {
-			return Produce.NONE;
 		}
+		return Produce.NONE;
 	}
 
 	public void grow(){
@@ -101,8 +102,8 @@ public abstract class Tanaman extends Resource{
 		this.watered[0] = this.isWateredToday();
 		super.resetCare();
 		this.daytoharvest--;
-		if (this.totalWatered() < 0){
-			super.kill();
+		if (this.totalWatered() <= 0){
+			this.alive = false;
 		}
 	}
 }

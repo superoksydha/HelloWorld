@@ -66,7 +66,7 @@ public class MapKandangSD implements Serializable {
 
 			case'd':
 			{
-				if ((((this.pemain).getCoord()).getX() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
+				if ((((this.pemain).getCoord()).getX() + 1) > 7 || (((this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() + 1)][(((this.pemain).getCoord()).getY())] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke kanan");
 				}
 				else {
@@ -90,7 +90,7 @@ public class MapKandangSD implements Serializable {
 
 			case's':
 			{
-				if ((((this.pemain).getCoord()).getY() + 1) < 0 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY() + 1)] instanceof TileHM)) {
+				if ((((this.pemain).getCoord()).getY() + 1) > 12 || (((this.mapu[(((this.pemain).getCoord()).getX())][(((this.pemain).getCoord()).getY() + 1)]).cekIsi == true)) || (this.mapu[(((this.pemain).getCoord()).getX() - 1)][(((this.pemain).getCoord()).getY() + 1)] instanceof TileHM)) {
 					System.out.println("Maaf, anda tidak bisa pindah ke bawah");
 				}
 				else {
@@ -147,6 +147,13 @@ public class MapKandangSD implements Serializable {
 								int piltar = in.nextInt();
 								((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = this.pemain.bagI[piltar];
 								this.pemain.bagI[piltar] = null;
+								for (int i = 0; i <=3; i++) {
+									for (int j = 0; j <=12; j++) {
+										if (((TileKandangSapiD) this.mapu[i][j]).isi != null) {
+											((TileKandangSapiD) this.mapu[i][j]).isi.feed();
+										}
+									}
+								}
 							}
 							else {
 								System.out.println("Anda tidak dapat menaruh item didepan anda");
@@ -192,8 +199,8 @@ public class MapKandangSD implements Serializable {
 					this.pemain = null;
 					System.out.println("Player sudah dipindahkan ke map utama");
 					a.action(b,c,this);
+					throw new outBuildingException();
 			}
-			break;
 
 			case't':
 			{
@@ -227,7 +234,72 @@ public class MapKandangSD implements Serializable {
 
 			case'p':
 			{
-				//cek status, item, tools player, disini ada pilihan ganti tools juga
+				System.out.println(this.pemain.getNama() + " memiliki tools sebagai berikut:");
+				for(int i = 0; i<=9; i++) {
+					System.out.println(this.pemain.bagT[i].getName() + " sebanyak " + this.pemain.bagT[i].jumlah);
+				}
+				System.out.println("Tools yang sedang di-equip adalah: " + this.pemain.tool.getName());
+				System.out.println("Inventory sebagai berikut:");
+				for(int i = 0; i<12; i++) {
+					if(this.pemain.bagI[i] != null) {
+						System.out.println(this.pemain.bagI[i].getName());
+					}
+				}
+				System.out.println("Gold yang dimiliki adalah: " + this.pemain.gold);
+				System.out.println("0-9: Pilih tool equip");
+				System.out.println("x: back to map");
+				System.out.println("Masukkan pilihan anda");
+				char pilak = in.next().charAt(0);
+				switch(pilak) {
+					case '0': {
+						this.pemain.selectTool(0);
+					}
+					break;
+					case '1': {
+						this.pemain.selectTool(1);
+					}
+					break;
+					case '2': {
+						this.pemain.selectTool(2);
+					}
+					break;
+					case '3': {
+						this.pemain.selectTool(3);
+					}
+					break;
+					case '4': {
+						this.pemain.selectTool(4);
+					}
+					break;
+					case '5': {
+						this.pemain.selectTool(5);
+					}
+					break;
+					case '6': {
+						this.pemain.selectTool(6);
+					}
+					break;
+					case '7': {
+						this.pemain.selectTool(7);
+					}
+					break;
+					case '8': {
+						this.pemain.selectTool(8);
+					}
+					break;
+					case '9': {
+						this.pemain.selectTool(9);
+					}
+					break;
+					case 'x': {
+						System.out.println("OK");
+					}
+					break;
+					default: {
+						System.out.println("\n    Pilihan salah. Anda kembali ke map");
+					}
+					break;
+				}
 			}
 			break;
 
@@ -248,11 +320,16 @@ public class MapKandangSD implements Serializable {
 			case'c':
 			{
 				//cek objek arah hadap player
-				if (!(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileHM)) {
-					System.out.println("Anda menghadap petak kosong, tidak ada yang bisa dicek");
+				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileHM)) {
+					System.out.println("Ini tempat makan hewan anda berisi " + ((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getName());
 				}
 				else {
-					System.out.println("Ini tempat makan hewan anda");
+					if((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileKandangSapiD) && ((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+						System.out.println("Anda menghadap petak kosong");
+					}
+					else {
+						System.out.println("Didepan anda ada sapi bernama " + ((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getNama() + " dengan status makan " + ((TileKandangSapiD) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isFedToday());
+					}
 				}
 			}
 			break;

@@ -10,6 +10,7 @@ public class TileSawah extends Tile {
 	public TileSawah() {
 		super();
 		this.paculed = false;
+		this.cekIsi = false;
 		//atribut tanaman isi dengan null
 	}
 
@@ -40,9 +41,11 @@ public class TileSawah extends Tile {
 	}
 
 	public void resetDay(){
-		this.isi.resetDay();
-		if (!(this.isi.isAlive())){
-			this.removeTanaman();
+		if (this.cekIsi){
+			this.isi.resetDay();
+			if (!(this.isi.isAlive())){
+				this.removeTanaman();
+			}
 		}
 	}
 

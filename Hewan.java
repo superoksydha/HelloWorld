@@ -39,16 +39,17 @@ public class Hewan extends Resource{
 
 	public Produce harvest(){
 	/* Mengembalikan hasil produksi hewan dalam bentuk String. */
-		if ((this.harvested == false) && (isCaredToday())){
-			switch (this.getJenis()){
-				case SAPI: return Produce.SUSU;
-				case DOMBA: return Produce.WOL;
-				case AYAM: return Produce.TELUR;
-				default: return Produce.NONE;
+		if (this.alive){
+			if ((this.harvested == false) && (isCaredToday())){
+				switch (this.getJenis()){
+					case SAPI: return Produce.SUSU;
+					case DOMBA: return Produce.WOL;
+					case AYAM: return Produce.TELUR;
+					default: return Produce.NONE;
+				}
 			}
-		} else {
-			return Produce.NONE;
 		}
+		return Produce.NONE;
 	}
 
 	public int totalFed(){
@@ -71,8 +72,8 @@ public class Hewan extends Resource{
 		this.fed[0] = this.isFedToday();	//memindahkan isi this.status ke fed[0]
 		super.resetCare();
 		this.harvested = false;				//set hewan sebagai belum diperah/digunting/diambil telur pada hari itu
-		if (this.totalFed() < 0) {
-			super.kill();					//jika hewan tidak diberi makan selama 6 hari terakhir, hewan mati
+		if (this.totalFed() <= 0) {
+			this.alive = false;					//jika hewan tidak diberi makan selama 6 hari terakhir, hewan mati
 		}
 	}
 }

@@ -77,21 +77,16 @@ public class Main {
 						System.out.println("                       +--------------------------+");
 						farm.action(home, chickencoop, barn);
 					} catch (saveException e) {
-						if (!((time.getJJ() > 3) && (time.getJJ() < 6))){
-							farm.resetDay();
-							barn.resetDay();
-							chickencoop.resetDay();
-							throw new wakeException();
-						}
+						
 					} catch (wakeException e) {
 						time.setJJ(06);
 						time.setMM(00);
 					} catch (inBuildingException e) {
-						jj = time.getJJ();
-						mm = time.getMM();
+						jj = Waktu.getJJ();
+						mm = Waktu.getMM();
 					} catch (outBuildingException e) {
-						time.setJJ(jj);
-						time.setMM(mm);
+						Waktu.setJJ(jj);
+						Waktu.setMM(mm);
 					}
 					break;
 				case 2:

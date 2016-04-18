@@ -9,6 +9,7 @@ public class TileKandangSapiD extends Tile {
 		super();
 		this.isi = null;
 		this.building = true;
+		this.cekIsi = false;
 	}
 
 	public void newHewan(Hewan hewan){
@@ -26,9 +27,11 @@ public class TileKandangSapiD extends Tile {
 	}
 
 	public void resetDay(){
-		this.isi.resetDay();
-		if (!(this.isi.isAlive())){
-			this.removeHewan();
+		if (this.cekIsi) {
+			this.isi.resetDay();
+			if (!(this.isi.isAlive())){
+				this.removeHewan();
+			}
 		}
 	}
 }

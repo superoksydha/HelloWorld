@@ -28,6 +28,7 @@ public class Player implements Serializable {
 		this.bagT[8] = new Tools("milker", 0);
 		this.bagT[9] = new Tools("move", 0);
 		this.selectTool(0);
+		this.bagI[0] = new Items("Lobak",100);
 	}
 
 	public String getNama(){

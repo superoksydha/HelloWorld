@@ -119,8 +119,8 @@ public class MapRumah implements Serializable {
 					this.pemain = null;
 					System.out.println("Player sudah dipindahkan ke map utama");
 					a.action(this, b, c);
+					throw new outBuildingException();
 			}
-			break;
 
 			case't':
 			{
@@ -154,7 +154,72 @@ public class MapRumah implements Serializable {
 
 			case'p':
 			{
-				//cek status, item, tools player, disini ada pilihan ganti tools juga (yang bikin inventory player siapa??)
+				System.out.println(this.pemain.getNama() + " memiliki tools sebagai berikut:");
+				for(int i = 0; i<9; i++) {
+					System.out.println(this.pemain.bagT[i].getName() + " sebanyak " + this.pemain.bagT[i].jumlah);
+				}
+				System.out.println("Tools yang sedang di-equip adalah: " + this.pemain.tool.getName());
+				System.out.println("Inventory sebagai berikut:");
+				for(int i = 0; i<12; i++) {
+					if(this.pemain.bagI[i] != null) {
+						System.out.println(this.pemain.bagI[i].getName());
+					}
+				}
+				System.out.println("Gold yang dimiliki adalah: " + this.pemain.gold);
+				System.out.println("0-9: Pilih tool equip");
+				System.out.println("x: back to map");
+				System.out.println("Masukkan pilihan anda");
+				char pilak = in.next().charAt(0);
+				switch(pilak) {
+					case '0': {
+						this.pemain.selectTool(0);
+					}
+					break;
+					case '1': {
+						this.pemain.selectTool(1);
+					}
+					break;
+					case '2': {
+						this.pemain.selectTool(2);
+					}
+					break;
+					case '3': {
+						this.pemain.selectTool(3);
+					}
+					break;
+					case '4': {
+						this.pemain.selectTool(4);
+					}
+					break;
+					case '5': {
+						this.pemain.selectTool(5);
+					}
+					break;
+					case '6': {
+						this.pemain.selectTool(6);
+					}
+					break;
+					case '7': {
+						this.pemain.selectTool(7);
+					}
+					break;
+					case '8': {
+						this.pemain.selectTool(8);
+					}
+					break;
+					case '9': {
+						this.pemain.selectTool(9);
+					}
+					break;
+					case 'x': {
+						System.out.println("OK");
+					}
+					break;
+					default: {
+						System.out.println("\n    Pilihan salah. Anda kembali ke map");
+					}
+					break;
+				}
 			}
 			break;
 
@@ -169,9 +234,18 @@ public class MapRumah implements Serializable {
 					oos.writeObject (b.mapu);
 					oos.writeObject (c.mapu);
 					oos.close ();
+					if (!((Waktu.getJJ() > 3) && (Waktu.getJJ() < 6))){
+							a.resetDay();
+							b.resetDay();
+							c.resetDay();
+							Waktu.setJJ(06);
+							Waktu.setMM(00);
+						}
+					//throw new saveException();
 				} catch (Exception e) {
 					e.printStackTrace ();
 				}
+				
 			}
 			break;
 
@@ -212,8 +286,10 @@ public class MapRumah implements Serializable {
 					{
 						sumGold = 0;
 						for(int i=0 ; i<12; i++) {
-							sumGold = sumGold + this.pemain.bagI[i].sellPrice;
-							this.pemain.bagI[i] = null;
+							if(this.pemain.bagI[i] != null) {
+								sumGold = sumGold + this.pemain.bagI[i].sellPrice;
+								this.pemain.bagI[i] = null;
+							}
 						}
 						this.pemain.gold = this.pemain.gold + sumGold;
 						System.out.println("\n\nSemua barang di tas telah terjual");
@@ -261,8 +337,8 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 3; ax++) {
-									for(int bx = 0;bx <= 12; bx++) {
+								for(int ax = 1; ax <= 3; ax++) {
+									for(int bx = 1;bx <= 12; bx++) {
 										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;
 											fax = ax;
@@ -281,8 +357,8 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 3; ax++) {
-									for(int bx = 0;bx <= 12; bx++) {
+								for(int ax = 1; ax <= 3; ax++) {
+									for(int bx = 1;bx <= 12; bx++) {
 										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;
 											fax = ax;
@@ -301,8 +377,8 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 3; ax++) {
-									for(int bx = 0;bx <= 12; bx++) {
+								for(int ax = 1; ax <= 3; ax++) {
+									for(int bx = 1;bx <= 12; bx++) {
 										if((((TileKandangAyam) b.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;
 											fax = ax;

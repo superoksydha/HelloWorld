@@ -245,6 +245,7 @@ public class MapMain implements Serializable {
 						a.pemain = this.pemain;
 						this.pemain = null;
 						a.action(this,b,c);
+						throw new inBuildingException();
 					}
 					if (((this.pemain).getCoord()).getX() == 13 && ((this.pemain).getCoord()).getY() == 4) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Sapi Domba");
@@ -252,6 +253,7 @@ public class MapMain implements Serializable {
 						c.pemain = this.pemain;
 						this.pemain = null;
 						c.action(this,a,b);
+						throw new inBuildingException();
 					}
 					if (((this.pemain).getCoord()).getX() == 4 && ((this.pemain).getCoord()).getY() == 16) {
 						System.out.println("Player sudah dipindahkan kedalam Kandang Ayam");
@@ -259,6 +261,7 @@ public class MapMain implements Serializable {
 						b.pemain = this.pemain;
 						this.pemain = null;
 						b.action(this,a,c);
+						throw new inBuildingException();
 					}
 				}
 			}
@@ -389,7 +392,8 @@ public class MapMain implements Serializable {
 				}
 				else if (this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileSawah) {
 					if (((TileSawah) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
-						System.out.println((((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).getNama());
+						System.out.println((((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).getNama() + " dengan status siram hari ini " + ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isWateredToday() + " dan status hidup " + ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isAlive());
+						System.out.println(((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.totalWatered());
 					}
 					else {
 						System.out.println("Di hadapan anda ada petak sawah");
@@ -409,8 +413,10 @@ public class MapMain implements Serializable {
 	}
 
 	public void resetDay(){
-		for (int j = 7; j<= 26; j++) {
-			resetDay();
+		for (int i = 10; i <= 29; i++) {
+			for (int j = 7; j<= 26; j++) {
+				((TileSawah)this.mapu[i][j]).resetDay();
+			}
 		}
 	}
 }

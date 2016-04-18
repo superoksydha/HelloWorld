@@ -147,6 +147,13 @@ public class MapKandangA implements Serializable {
 							int piltar = in.nextInt();
 							((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = this.pemain.bagI[piltar];
 							this.pemain.bagI[piltar] = null;
+							for (int i = 0; i <=3; i++) {
+									for (int j = 0; j <=12; j++) {
+										if(((TileKandangAyam) this.mapu[i][j]).isi != null) {
+											((TileKandangAyam) this.mapu[i][j]).isi.feed();
+										}
+									}
+								}
 						}
 						else {
 							if ( ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangAyam) && (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) ) {
@@ -177,8 +184,8 @@ public class MapKandangA implements Serializable {
 					this.pemain = null;
 					System.out.println("Player sudah dipindahkan ke map utama");
 					a.action(b,this,c);
+					throw new outBuildingException();
 			}
-			break;
 
 			case't':
 			{
@@ -212,7 +219,72 @@ public class MapKandangA implements Serializable {
 
 			case'p':
 			{
-				//cek status, item, tools player, disini ada pilihan ganti tools juga
+				System.out.println(this.pemain.getNama() + " memiliki tools sebagai berikut:");
+				for(int i = 0; i<9; i++) {
+					System.out.println(this.pemain.bagT[i].getName() + " sebanyak " + this.pemain.bagT[i].jumlah);
+				}
+				System.out.println("Tools yang sedang di-equip adalah: " + this.pemain.tool.getName());
+				System.out.println("Inventory sebagai berikut:");
+				for(int i = 0; i<12; i++) {
+					if(this.pemain.bagI[i] != null) {
+						System.out.println(this.pemain.bagI[i].getName());
+					}
+				}
+				System.out.println("Gold yang dimiliki adalah: " + this.pemain.gold);
+				System.out.println("0-9: Pilih tool equip");
+				System.out.println("x: back to map");
+				System.out.println("Masukkan pilihan anda");
+				char pilak = in.next().charAt(0);
+				switch(pilak) {
+					case '0': {
+						this.pemain.selectTool(0);
+					}
+					break;
+					case '1': {
+						this.pemain.selectTool(1);
+					}
+					break;
+					case '2': {
+						this.pemain.selectTool(2);
+					}
+					break;
+					case '3': {
+						this.pemain.selectTool(3);
+					}
+					break;
+					case '4': {
+						this.pemain.selectTool(4);
+					}
+					break;
+					case '5': {
+						this.pemain.selectTool(5);
+					}
+					break;
+					case '6': {
+						this.pemain.selectTool(6);
+					}
+					break;
+					case '7': {
+						this.pemain.selectTool(7);
+					}
+					break;
+					case '8': {
+						this.pemain.selectTool(8);
+					}
+					break;
+					case '9': {
+						this.pemain.selectTool(9);
+					}
+					break;
+					case 'x': {
+						System.out.println("OK");
+					}
+					break;
+					default: {
+						System.out.println("\n    Pilihan salah. Anda kembali ke map");
+					}
+					break;
+				}
 			}
 			break;
 
@@ -233,11 +305,16 @@ public class MapKandangA implements Serializable {
 			case'c':
 			{
 				//cek objek arah hadap player
-				if (!(this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileHM)) {
-					System.out.println("Anda menghadap petak kosong, tidak ada yang bisa dicek");
+				if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileHM)) {
+					System.out.println("Ini tempat makan hewan anda berisi " + ((TileHM) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getName());
 				}
 				else {
-					System.out.println("Ini tempat makan hewan anda");
+					if((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileKandangAyam) && ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+						System.out.println("Anda menghadap petak kosong");
+					}
+					else {
+						System.out.println("Didepan anda ada ayam bernama " + ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getNama() + " dengan status makan " + ((TileKandangAyam) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isFedToday());
+					}
 				}
 			}
 			break;
