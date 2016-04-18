@@ -16,6 +16,8 @@ public class Main {
 		char c;
 		Waktu time;
 		boolean dummy;
+		int jj = 06;
+		int mm = 00;
 
 		System.out.println("  **     **     **     ********   **      ** ********   *****   **********");
 		System.out.println("  **     **    ****    **     **   **    **  **       **            **");
@@ -84,7 +86,7 @@ public class Main {
 						time.setJJ(06);
 						time.setMM(00);
 					}
-					break	;
+					break;
 				case 2:
 					System.out.println("Loading... \n");
 					System.out.println("\n");
@@ -132,7 +134,14 @@ public class Main {
 					} catch (wakeException e) {
 						time.setJJ(06);
 						time.setMM(00);
-					} catch (Exception e) {
+					} catch (inBuildingException e) {
+						jj = time.getJJ();
+						mm = time.getMM();
+					} catch (outBuildingException e) {
+						time.setJJ(jj);
+						time.setMM(mm);
+					}
+					catch (Exception e) {
 						e.printStackTrace ();
 					}
 					break;
