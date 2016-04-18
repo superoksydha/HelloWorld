@@ -81,6 +81,7 @@ public class Main {
 							farm.resetDay();
 							barn.resetDay();
 							chickencoop.resetDay();
+							throw new wakeException();
 						}
 					} catch (wakeException e) {
 						time.setJJ(06);
