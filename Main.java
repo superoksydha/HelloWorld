@@ -86,6 +86,12 @@ public class Main {
 					} catch (wakeException e) {
 						time.setJJ(06);
 						time.setMM(00);
+					} catch (inBuildingException e) {
+						jj = time.getJJ();
+						mm = time.getMM();
+					} catch (outBuildingException e) {
+						time.setJJ(jj);
+						time.setMM(mm);
 					}
 					break;
 				case 2:
