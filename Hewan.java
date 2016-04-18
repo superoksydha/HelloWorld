@@ -5,7 +5,7 @@ public class Hewan extends Resource{
 	//Apakah hewan telah diperah/digunting/diambil telur pada hari itu
 		//setter: String harvest()
 		//getter: - (Hanya digunakan pada metode harvest())
-	private boolean[] fed;
+	private boolean fed[] = new boolean[6];
 	//Pencatatan pemberian makan hewan selama 6 hari terakhir
 		//setter: - (Diset pada konstruktor dan hanya dapat diubah via resetDay())
 		//getter: - (Hanya digunakan pada metode resetDay()), int totalFed() utk mengetahui berapa kali hewan telah diberi makan

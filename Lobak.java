@@ -3,7 +3,7 @@ public class Lobak extends Tanaman {
 	/* METHOD */
 
 	public Lobak(String nama, int x, int y){
-		super(nama, Spesies.LOBAK, 5, x, y);
+		super(nama, Resource.Spesies.LOBAK, 5, x, y);
 	}
 
 	@Override

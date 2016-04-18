@@ -26,9 +26,9 @@ public class TileSawah extends Tile {
 	public void tanam(Resource.Spesies biji, Koordinat k){
 		if (this.paculed == true){
 			switch (biji){
-				case KOL: this.isi = new Kol("Kol", k.getX(), k.getY());
-				case LOBAK: this.isi = new Lobak("Lobak", k.getX(), k.getY());
-				case JAGUNG: this.isi = new Jagung("Jagung", k.getX(), k.getY());
+				case KOL: this.isi = new Kol("Kol", k.getX(), k.getY()); break;
+				case LOBAK: this.isi = new Lobak("Lobak", k.getX(), k.getY()); break;
+				case JAGUNG: this.isi = new Jagung("Jagung", k.getX(), k.getY()); break;
 			}
 			this.cekIsi = true;
 		}

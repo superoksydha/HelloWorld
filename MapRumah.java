@@ -228,8 +228,8 @@ public class MapRumah implements Serializable {
 						System.out.println("\t2. Beli biji lobak");
 						System.out.println("\t3. Beli biji jagung");
 						System.out.println("\t4. Beli sapi");
-						System.out.println("\t4. Beli domba");
-						System.out.println("\t4. Beli ayam");
+						System.out.println("\t5. Beli domba");
+						System.out.println("\t6. Beli ayam");
 
 						System.out.print("\n\n Pilih barang yang akan dibeli : "); menubeli = in.nextInt();
 
@@ -261,7 +261,7 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 7; ax++) {
+								for(int ax = 0; ax <= 3; ax++) {
 									for(int bx = 0;bx <= 12; bx++) {
 										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;
@@ -281,7 +281,7 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 7; ax++) {
+								for(int ax = 0; ax <= 3; ax++) {
 									for(int bx = 0;bx <= 12; bx++) {
 										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;
@@ -301,7 +301,7 @@ public class MapRumah implements Serializable {
 								int fax = 0;
 								int fbx = 0;
 								boolean stop = false;
-								for(int ax = 0; ax <= 7; ax++) {
+								for(int ax = 0; ax <= 3; ax++) {
 									for(int bx = 0;bx <= 12; bx++) {
 										if((((TileKandangAyam) b.mapu[ax][bx]).isi == null) && (stop == false)) {
 											stop = true;

@@ -5,7 +5,7 @@ public abstract class Tanaman extends Resource{
 	//Fase hewan. Bila biji mengembalikan 0, dst.
 		//setter: void grow();
 		//getter: int getFase()
-	private boolean[] watered;
+	private boolean watered[] = new boolean[4];
 	//Pencatatan penyiraman tanaman dalam 4 hari terakhir
 		//setter: - (Diset pada konstruktor dan hanya dapat diubah via resetDay())
 		//getter: - (Hanya digunakan pada metode resetDay()), int totalWatered() utk mengetahui berapa kali tanaman disiram
