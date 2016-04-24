@@ -22,6 +22,37 @@ public class Hewan extends Resource{
 		}
 	}
 
+	public void showStatus(){
+		System.out.println("Hewan " + this.getJenis());
+		System.out.println("Hewan ini berada di (" + this.getLokasi().getX() + "," + this.getLokasi().getY() + ") di kandangnya");
+		System.out.print("Hewan ini ");
+		if (this.harvested == true){
+			System.out.print("telah");
+		} else {
+			System.out.print("belum");
+		}
+		System.out.print(" diambil ");
+		switch (this.getJenis()){
+			case SAPI: System.out.print("susunya");
+			break;
+			case DOMBA: System.out.print("susunya");
+			break;
+			case AYAM: System.out.print("susunya");
+			break;
+			default: System.out.print("errorspecies!");
+			break;
+		}
+		System.out.println(" hari ini.");
+		System.out.println("Hewan ini telah diberi makan " + totalFed() + " selama enam hari terakhir.");
+		System.out.print("Hewan ini ");
+		if (isFedToday()){
+			System.out.print("telah");
+		} else {
+			System.out.print("belum");
+		}
+		System.out.println(" diberi makan hari ini.");
+	}
+
 	public void kickTo(int x, int y){
 	/* Mengubah koordinat lokasi hewan menjadi (x,y) */
 		super.setLokasi(x, y);

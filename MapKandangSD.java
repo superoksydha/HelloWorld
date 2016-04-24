@@ -108,7 +108,7 @@ public class MapKandangSD implements Serializable {
 				}
 				else {
 					if (((this.pemain).tool).getName() == "move") {
-						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instance of TileKandangSapiD) {
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangSapiD) {
 							if (((TileKandangSapiD)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
 								switch(this.pemain.getOrient()) {
 									case TOP : {
@@ -346,7 +346,7 @@ public class MapKandangSD implements Serializable {
 		}
 		this.action(a,b,c);
 	}
-	
+
 	public void resetDay(){
 		for (int i = 0; i <=7; i++) {
 			for (int j = 0; j <=12; j++) {

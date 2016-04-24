@@ -32,6 +32,20 @@ public abstract class Tanaman extends Resource{
 		this.harvested = false;				//set tanaman sebagai belum dipanen
 	}
 
+	public void showStatus(){
+		System.out.println("Tanaman " + this.getJenis());
+		System.out.println("Tanaman ini berada di (" + this.getLokasi().getX() + "," + this.getLokasi().getY() + ")");
+		System.out.println("Tanaman ini berada pada fase ke-" + this.fase);
+		System.out.println("Tanaman ini telah disiram " + totalWatered() + " selama empat hari terakhir.");
+		System.out.print("Tanaman ini ");
+		if (isWateredToday()){
+			System.out.print("telah");
+		} else {
+			System.out.print("belum");
+		}
+		System.out.println(" disiram hari ini.");
+	}
+
 	public void water(){
 	/* Mengubah status tanaman menjadi telah disiram pada hari itu */
 		this.care();
@@ -48,9 +62,12 @@ public abstract class Tanaman extends Resource{
 			if (this.daytoharvest <= 0){
 				this.harvested = true;
 				switch (this.getJenis()){
-					case KOL: return Produce.KOL;
-					case JAGUNG: return Produce.JAGUNG;
-					case LOBAK: return Produce.LOBAK;
+					case KOL: this.alive = false;
+						return Produce.KOL;
+					case JAGUNG:
+						return Produce.JAGUNG;
+					case LOBAK: this.alive = false;
+						return Produce.LOBAK;
 					default: return Produce.NONE;
 				}
 			}
@@ -98,6 +115,7 @@ public abstract class Tanaman extends Resource{
 	public void resetDay(){
 		for(int i = 3;i > 0;i--){
 			this.watered[i] = this.watered[i - 1];	//memindahkan isi array watered 1 hari ke belakang
+			System.out.print(i + ",");
 		}
 		this.watered[0] = this.isWateredToday();
 		super.resetCare();

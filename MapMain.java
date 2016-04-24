@@ -126,23 +126,23 @@ public class MapMain implements Serializable {
 			case'e':
 			{
 				switch (((this.pemain).tool).getName()) {
-				
-					case "milker"	: 
+
+					case "milker"	:
 					{
 						System.out.println("Milker tidak dapat digunakan disini"); break;
 					}
-					
-					case "gunting"	: 
+
+					case "gunting"	:
 					{
 						System.out.println("Gunting tidak dapat digunakan disini"); break;
 					}
-									 
-					case "move"		: 
+
+					case "move"		:
 					{
 						System.out.println("Move tidak dapat digunakan disini"); break;
 					}
-					
-					case "hand" : 
+
+					case "hand" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
@@ -150,7 +150,7 @@ public class MapMain implements Serializable {
 									for (int i = 0; i<12; i++) {
 										if ((this.pemain).bagI[i] != null) {
 											Resource.Produce hasilpanen = ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.harvest();
-										
+
 											switch (hasilpanen) {
 												case KOL : {
 													(this.pemain).bagI[i] = new Items("Kol", 100); break;
@@ -176,8 +176,8 @@ public class MapMain implements Serializable {
 						}
 						break;
 					}
-						 
-					case "pacul" : 
+
+					case "pacul" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).paculed = true; break;
@@ -186,8 +186,8 @@ public class MapMain implements Serializable {
 							System.out.println("Anda tidak dapat menggunakan tool ini disini");
 						}
 					}
-									  
-					case "penyiramTanaman" : 
+
+					case "penyiramTanaman" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
@@ -200,15 +200,15 @@ public class MapMain implements Serializable {
 						 break;
 					}
 
-					case "bijiKol" : 
+					case "bijiKol" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
 								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.KOL, (this.pemain).inFrontOf());
 								(this.pemain).bagT[5].jumlah--;
-							
+
 							} else {
-								System.out.println("Tidak dapat menanam biji kol");	
+								System.out.println("Tidak dapat menanam biji kol");
 							}
 						}
 						else {
@@ -216,8 +216,8 @@ public class MapMain implements Serializable {
 						}
 						 break;
 					}
-									  
-					case "bijiLobak" : 
+
+					case "bijiLobak" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
@@ -232,15 +232,15 @@ public class MapMain implements Serializable {
 						}
 						 break;
 					}
-									  
-					case "bijiJagung" : 
+
+					case "bijiJagung" :
 					{
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
 							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
 								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.JAGUNG, (this.pemain).inFrontOf());
 								(this.pemain).bagT[6].jumlah--;
 							} else {
-								System.out.println("Tidak dapat menanam biji jagung");				
+								System.out.println("Tidak dapat menanam biji jagung");
 							}
 						}
 						else {
@@ -248,8 +248,8 @@ public class MapMain implements Serializable {
 						}
 						 break;
 					}
-									 
-					case "arit"		 : 
+
+					case "arit"		 :
 					{
 						//HARUS DICEK DULU APAKAH TILE YANG DIDEPAN PLAYER ITU TANAMAN
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
@@ -427,8 +427,7 @@ public class MapMain implements Serializable {
 				}
 				else if (this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()] instanceof TileSawah) {
 					if (((TileSawah) this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
-						System.out.println((((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).getNama() + " dengan status siram hari ini " + ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isWateredToday() + " dan status hidup " + ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.isAlive());
-						System.out.println(((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.totalWatered());
+						(((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi).showStatus();
 					}
 					else {
 						System.out.println("Di hadapan anda ada petak sawah");
@@ -439,6 +438,53 @@ public class MapMain implements Serializable {
 				}
 			}
 			break;
+
+			case'f':
+			{
+				System.out.println("STATUS HEWAN\n");
+				boolean chk = false;
+				this.y = 13;
+				for (int i = 0; i <=7; i++) {
+					for (int j = 0; j <=12; j++) {
+						if (((TileKandangAyam)b.mapu[i][j]).cekIsi){
+							chk = true;
+							((TileKandangAyam)b.mapu[i][j]).isi.showStatus();
+							System.out.println();
+						}
+					}
+				}
+				if (!chk) {
+					System.out.println("Tidak ada hewan di kandang ayam...");
+				}
+				for (int i = 0; i <=7; i++) {
+					for (int j = 0; j <=12; j++) {
+						if (((TileKandangSapiD)c.mapu[i][j]).cekIsi){
+							chk = true;
+							((TileKandangSapiD)c.mapu[i][j]).isi.showStatus();
+							System.out.println();
+						}
+					}
+				}
+				if (!chk) {
+					System.out.println("Tidak ada hewan di kandang sapi dan domba...");
+				}
+				System.out.println("STATUS TANAMAN\n");
+				chk = false;
+				for (int i = 10; i <= 29; i++) {
+					for (int j = 7; j<= 26; j++) {
+						if (((TileSawah)this.mapu[i][j]).cekIsi){
+							chk = true;
+							((TileSawah)this.mapu[i][j]).isi.showStatus();
+							System.out.println();
+						}
+					}
+				}
+				if (!chk) {
+					System.out.println("Tidak ada tanaman di ladang...");
+				}
+			}
+			break;
+
 			default: {
 				System.out.println("\n    Pilihan salah. Mohon ulangi");
 			}
