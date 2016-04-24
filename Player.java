@@ -15,7 +15,7 @@ public class Player implements Serializable {
 	public Player (String nama, int x, int y) {
 		this.nama = nama;
 		this.coord = new Koordinat(x, y);
-		this.gold = 0;
+		this.gold = 100;
 		this.orient = Orientation.TOP;
 		this.bagT[0] = new Tools("hand", 0);
 		this.bagT[1] = new Tools("pacul", 0);

@@ -108,6 +108,7 @@ public class MapKandangA implements Serializable {
 				}
 				else {
 					if (((this.pemain).tool).getName() == "move") {
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangAyam) {
 						if (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
 							switch(this.pemain.getOrient()) {
 								case TOP : {
@@ -141,6 +142,10 @@ public class MapKandangA implements Serializable {
 						}
 					}
 					else {
+						System.out.println("Anda tidak dapat menggunakan tools tesebut disini");
+					}
+					}
+					else {
 						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileHM) {
 							//ambil item dari bag taruh di tile tempat hewan makan
 							System.out.println("Masukkan nomor item yang ingin ditaruh di tempat makanan hewan");
@@ -156,7 +161,8 @@ public class MapKandangA implements Serializable {
 								}
 						}
 						else {
-							if ( ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangAyam) && (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) ) {
+							if (((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileKandangAyam)) {
+							if ( (((TileKandangAyam)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) ) {
 								int urut = 0;
 								while(this.pemain.bagI[urut] != null) {
 									urut = urut + 1;
@@ -172,6 +178,10 @@ public class MapKandangA implements Serializable {
 								System.out.println("Anda tidak dapat menggunakan tool hand untuk tile didepan anda");
 							}
 						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tools tesebut disini");
+						}
+					}
 					}
 				}
 			}

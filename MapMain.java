@@ -144,77 +144,107 @@ public class MapMain implements Serializable {
 					
 					case "hand" : 
 					{
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
-							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getDayToHarvest() <= 0) {
-								for (int i = 0; i<12; i++) {
-									if ((this.pemain).bagI[i] != null) {
-										Resource.Produce hasilpanen = ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.harvest();
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+								if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.getDayToHarvest() <= 0) {
+									for (int i = 0; i<12; i++) {
+										if ((this.pemain).bagI[i] != null) {
+											Resource.Produce hasilpanen = ((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.harvest();
 										
-										switch (hasilpanen) {
-											case KOL : {
-															(this.pemain).bagI[i] = new Items("Kol", 100); break;
-													   }
-											case JAGUNG : {
-															(this.pemain).bagI[i] = new Items("Jagung", 100); break;
-													   }
-											case LOBAK : {
-															(this.pemain).bagI[i] = new Items("Lobak", 100); break;
-													   }
+											switch (hasilpanen) {
+												case KOL : {
+													(this.pemain).bagI[i] = new Items("Kol", 100); break;
+												}
+												case JAGUNG : {
+													(this.pemain).bagI[i] = new Items("Jagung", 100); break;
+												}
+												case LOBAK : {
+													(this.pemain).bagI[i] = new Items("Lobak", 100); break;
+											   }
+											}
 										}
 									}
+								} else {
+								System.out.println("Tidak ada slot di tas, panen dibatalkan");
 								}
 							} else {
-								System.out.println("Tidak ada slot di tas, panen dibatalkan");
+								System.out.println("Tidak ada yang bisa dipanen");
 							}
-						} else {
-							System.out.println("Tidak ada yang bisa dipanen");
 						}
-						 break;
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
+						}
+						break;
 					}
 						 
 					case "pacul" : 
 					{
-						((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).paculed = true; break;
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).paculed = true; break;
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
+						}
 					}
 									  
 					case "penyiramTanaman" : 
 					{
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
-							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.water();
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
+								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi.water();
+							}
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
 						}
 						 break;
 					}
 
 					case "bijiKol" : 
 					{
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
-							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.KOL, (this.pemain).inFrontOf());
-							(this.pemain).bagT[5].jumlah--;
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.KOL, (this.pemain).inFrontOf());
+								(this.pemain).bagT[5].jumlah--;
 							
-						} else {
-							System.out.println("Tidak dapat menanam biji kol");	
+							} else {
+								System.out.println("Tidak dapat menanam biji kol");	
+							}
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
 						}
 						 break;
 					}
 									  
 					case "bijiLobak" : 
 					{
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
-							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.LOBAK, (this.pemain).inFrontOf());
-							(this.pemain).bagT[4].jumlah--;
-						} else {
-							System.out.println("Tidak dapat menanam biji lobak");
-						}							
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.LOBAK, (this.pemain).inFrontOf());
+								(this.pemain).bagT[4].jumlah--;
+							} else {
+								System.out.println("Tidak dapat menanam biji lobak");
+							}
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
+						}
 						 break;
 					}
 									  
 					case "bijiJagung" : 
 					{
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
-							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.JAGUNG, (this.pemain).inFrontOf());
-							(this.pemain).bagT[6].jumlah--;
-						} else {
-							System.out.println("Tidak dapat menanam biji jagung");				
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi == null) {
+								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).tanam(Resource.Spesies.JAGUNG, (this.pemain).inFrontOf());
+								(this.pemain).bagT[6].jumlah--;
+							} else {
+								System.out.println("Tidak dapat menanam biji jagung");				
+							}
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
 						}
 						 break;
 					}
@@ -222,10 +252,15 @@ public class MapMain implements Serializable {
 					case "arit"		 : 
 					{
 						//HARUS DICEK DULU APAKAH TILE YANG DIDEPAN PLAYER ITU TANAMAN
-						if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
-							((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = null;
-						} else {
-							System.out.println("Tidak ada tanaman untuk diarit");
+						if ((this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]) instanceof TileSawah) {
+							if (((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi != null) {
+								((TileSawah)this.mapu[((this.pemain).inFrontOf()).getX()][((this.pemain).inFrontOf()).getY()]).isi = null;
+							} else {
+								System.out.println("Tidak ada tanaman untuk diarit");
+							}
+						}
+						else {
+							System.out.println("Anda tidak dapat menggunakan tool ini disini");
 						}
 						 break;
 					}

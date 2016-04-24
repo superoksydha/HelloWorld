@@ -312,82 +312,112 @@ public class MapRumah implements Serializable {
 						switch (menubeli) {
 							case 1 :
 							{
-								(this.pemain).bagT[5].jumlah++;
-								(this.pemain).gold = (this.pemain).gold - 50;
+								if ((this.pemain).gold >= 50) {
+									(this.pemain).bagT[5].jumlah++;
+									(this.pemain).gold = (this.pemain).gold - 50;
+								}
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
 							case 2 :
 							{
-								(this.pemain).bagT[4].jumlah++;
-								(this.pemain).gold = (this.pemain).gold - 50;
+								if ((this.pemain).gold >= 50) {
+									(this.pemain).bagT[4].jumlah++;
+									(this.pemain).gold = (this.pemain).gold - 50;
+								}
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
 							case 3 :
 							{
-								(this.pemain).bagT[6].jumlah++;
-								(this.pemain).gold = (this.pemain).gold - 50;
+								if ((this.pemain).gold >= 50) {
+									(this.pemain).bagT[6].jumlah++;
+									(this.pemain).gold = (this.pemain).gold - 50;
+								}
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
 							case 4 :
 							{
 								//beli sapi
-								int fax = 0;
-								int fbx = 0;
-								boolean stop = false;
-								for(int ax = 1; ax <= 3; ax++) {
-									for(int bx = 1;bx <= 12; bx++) {
-										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
-											stop = true;
-											fax = ax;
-											fbx = bx;
+								if ((this.pemain).gold >= 50) {
+									int fax = 0;
+									int fbx = 0;
+									boolean stop = false;
+									for(int ax = 1; ax <= 3; ax++) {
+										for(int bx = 1;bx <= 12; bx++) {
+											if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
+												stop = true;
+												fax = ax;
+												fbx = bx;
+											}
 										}
 									}
+									((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("sapi",Resource.Spesies.SAPI,fax,fbx);
+									(this.pemain).gold = (this.pemain).gold - 50;
 								}
-								((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("sapi",Resource.Spesies.SAPI,fax,fbx);
-								(this.pemain).gold = (this.pemain).gold - 50;
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
 							case 5 :
 							{
 								//beli domba
-								int fax = 0;
-								int fbx = 0;
-								boolean stop = false;
-								for(int ax = 1; ax <= 3; ax++) {
-									for(int bx = 1;bx <= 12; bx++) {
-										if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
-											stop = true;
-											fax = ax;
-											fbx = bx;
+								if ((this.pemain).gold >= 50) {
+									int fax = 0;
+									int fbx = 0;
+									boolean stop = false;
+									for(int ax = 1; ax <= 3; ax++) {
+										for(int bx = 1;bx <= 12; bx++) {
+											if((((TileKandangSapiD) c.mapu[ax][bx]).isi == null) && (stop == false)) {
+												stop = true;
+												fax = ax;
+												fbx = bx;
+											}
 										}
 									}
+									((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("domba",Resource.Spesies.DOMBA,fax,fbx);
+									(this.pemain).gold = (this.pemain).gold - 50;
 								}
-								((TileKandangSapiD) c.mapu[fax][fbx]).isi = new Hewan("domba",Resource.Spesies.DOMBA,fax,fbx);
-								(this.pemain).gold = (this.pemain).gold - 50;
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
 							case 6 :
 							{
 								//beli ayam
-								int fax = 0;
-								int fbx = 0;
-								boolean stop = false;
-								for(int ax = 1; ax <= 3; ax++) {
-									for(int bx = 1;bx <= 12; bx++) {
-										if((((TileKandangAyam) b.mapu[ax][bx]).isi == null) && (stop == false)) {
-											stop = true;
-											fax = ax;
-											fbx = bx;
+								if ((this.pemain).gold >= 50) {
+									int fax = 0;
+									int fbx = 0;
+									boolean stop = false;
+									for(int ax = 1; ax <= 3; ax++) {
+										for(int bx = 1;bx <= 12; bx++) {
+											if((((TileKandangAyam) b.mapu[ax][bx]).isi == null) && (stop == false)) {
+												stop = true;
+												fax = ax;
+												fbx = bx;
+											}
 										}
 									}
+									((TileKandangAyam) b.mapu[fax][fbx]).isi = new Hewan("ayam",Resource.Spesies.AYAM,fax,fbx);
+									(this.pemain).gold = (this.pemain).gold - 50;
 								}
-								((TileKandangAyam) b.mapu[fax][fbx]).isi = new Hewan("ayam",Resource.Spesies.AYAM,fax,fbx);
-								(this.pemain).gold = (this.pemain).gold - 50;
+								else {
+									System.out.println("Anda tidak memiliki cukup gold untuk membeli barang ini");
+								}
 								break;
 							}
 
