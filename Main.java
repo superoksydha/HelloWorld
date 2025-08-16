@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.*;
 
 /* Eksperimen Menggunakan Github. Thank you, proyek lama. */
+/* Edit #2 */
 
 public class Main {
 
@@ -160,4 +161,5 @@ public class Main {
 		}
 	}
 }
+
 
