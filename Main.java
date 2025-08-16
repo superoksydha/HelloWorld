@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.io.*;
 
+/* Eksperimen Menggunakan Github. Thank you, proyek lama. */
+
 public class Main {
 
 	public static void main (String args[]) {
@@ -158,3 +160,4 @@ public class Main {
 		}
 	}
 }
+
